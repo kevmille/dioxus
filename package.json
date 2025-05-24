@@ -6,8 +6,9 @@
     "tailwindcss": "^4.1.7"
   },
   "scripts": {
-    "css:build": "npx tailwindcss -i ./tailwind.css -o assets/tailwind.css",
-    "css:watch": "npx tailwindcss -i ./tailwind.css -o assets/tailwind.css --watch",
-    "dev": "npm run css:watch & ./dx serve"
+    "dev": "npm run css:watch & dx serve",
+    "build": "npm run css:build && dx build --release",
+    "css:build": "tailwindcss -i ./assets/input.css -o ./assets/tailwind.css",
+    "css:watch": "tailwindcss -i ./assets/input.css -o ./assets/tailwind.css --watch"
   }
 }
