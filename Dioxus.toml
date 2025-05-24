@@ -1,4 +1,6 @@
 [application]
+name = "dioxus-app"
+default_platform = "web"
 
 [web.app]
 
@@ -20,6 +22,7 @@ style = []
 script = []
 
 [web.resource.dev]
+dev = true
 
 # Javascript code file
 # serve: [dev-server] only
