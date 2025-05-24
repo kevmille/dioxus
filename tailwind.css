@@ -1,0 +1,46 @@
+/* assets/tailwind.css - Tailwind CSS v4 */
+@import "tailwindcss";
+
+/* Define your custom theme with @theme directive */
+@theme {
+    /* Custom colors */
+    --color-forest-50: #f8fdf8;
+    --color-forest-100: #f0f9f0;
+    --color-forest-200: #e1f2e1;
+    --color-forest-300: #c7e6c7;
+    --color-forest-400: #a8d8a8;
+    --color-forest-500: #8fbc8f;
+    --color-forest-600: #7ba87b;
+    --color-forest-700: #6b9a6b;
+    --color-forest-800: #5a8b5a;
+    --color-forest-900: #4a7c4a;
+    --color-forest-950: #2a4d2a;
+
+    --color-bamboo-50: #f8fdf8;
+    --color-bamboo-100: #f5f8f5;
+    --color-bamboo-200: #e8f0e8;
+    --color-bamboo-300: #d4e4d4;
+    --color-bamboo-400: #b8d4b8;
+    --color-bamboo-500: #8fbc8f;
+    --color-bamboo-600: #7ba87b;
+    --color-bamboo-700: #6b9a6b;
+    --color-bamboo-800: #5a8b5a;
+    --color-bamboo-900: #4a7c4a;
+    --color-bamboo-950: #2a4d2a;
+
+    /* Custom shadows */
+    --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+/* Custom utility classes (optional) */
+@utility btn {
+    @apply px-4 py-2 rounded font-semibold transition-colors;
+}
+
+@utility btn-primary {
+    @apply btn bg-bamboo-600 text-white hover:bg-bamboo-500 focus:outline-2 focus:outline-offset-2 focus:outline-bamboo-600;
+}
+
+@utility card {
+    @apply bg-white rounded-lg shadow-md p-6;
+}
