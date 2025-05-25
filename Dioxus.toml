@@ -7,10 +7,6 @@ default_platform = "web"
 # HTML title tag content
 title = "toki"
 
-# include `assets` in web platform
-[web.resource]
-style = ["assets/tailwind.css"]
-
 [web.watcher]
 watch_path = ["src", "assets"]
 index_on_404 = true

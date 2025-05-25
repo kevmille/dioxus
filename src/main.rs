@@ -1,3 +1,10 @@
+mod components;
+use components::{CallToAction, Footer, Hero, FAQ};
+
+use crate::CallToAction::CallToAction;
+use crate::Footer::Footer;
+use crate::Hero::Hero;
+use crate::FAQ::FAQ;
 use dioxus::prelude::*;
 
 #[derive(Debug, Clone, Routable, PartialEq)]
@@ -13,7 +20,6 @@ enum Route {
 }
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
-const HEADER_SVG: Asset = asset!("/assets/header.svg");
 const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
 
 fn main() {
@@ -26,138 +32,6 @@ fn App() -> Element {
         document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
         Router::<Route> { }
-    }
-}
-
-#[component]
-pub fn Hero() -> Element {
-    rsx! {
-        div {
-            class: "min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-white",
-            div { class: "text-center mb-12",
-                img {
-                    src: HEADER_SVG,
-                    class: "w-32 h-32 mx-auto mb-8 drop-shadow-lg",
-                    alt: "Dioxus Logo"
-                }
-                h1 { class: "text-5xl font-bold mb-4", "Welcome to Dioxus" }
-                p { class: "text-xl opacity-90", "Build fast, reliable web applications with Rust" }
-            }
-            div {
-                class: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl px-6",
-                a {
-                    href: "https://dioxuslabs.com/learn/0.6/",
-                    class: "bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-all transform hover:scale-105 border border-white/20",
-                    div { class: "text-3xl mb-3", "📚" }
-                    h3 { class: "font-semibold mb-2", "Learn Dioxus" }
-                    p { class: "text-sm opacity-80", "Get started with comprehensive guides" }
-                }
-                a {
-                    href: "https://dioxuslabs.com/awesome",
-                    class: "bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-all transform hover:scale-105 border border-white/20",
-                    div { class: "text-3xl mb-3", "🚀" }
-                    h3 { class: "font-semibold mb-2", "Awesome Dioxus" }
-                    p { class: "text-sm opacity-80", "Discover amazing projects and resources" }
-                }
-                a {
-                    href: "https://github.com/dioxus-community/",
-                    class: "bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-all transform hover:scale-105 border border-white/20",
-                    div { class: "text-3xl mb-3", "📡" }
-                    h3 { class: "font-semibold mb-2", "Community Libraries" }
-                    p { class: "text-sm opacity-80", "Extend your apps with community tools" }
-                }
-                a {
-                    href: "https://github.com/DioxusLabs/sdk",
-                    class: "bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-all transform hover:scale-105 border border-white/20",
-                    div { class: "text-3xl mb-3", "⚙️" }
-                    h3 { class: "font-semibold mb-2", "Development Kit" }
-                    p { class: "text-sm opacity-80", "Professional development tools" }
-                }
-                a {
-                    href: "https://marketplace.visualstudio.com/items?itemName=DioxusLabs.dioxus",
-                    class: "bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-all transform hover:scale-105 border border-white/20",
-                    div { class: "text-3xl mb-3", "💫" }
-                    h3 { class: "font-semibold mb-2", "VSCode Extension" }
-                    p { class: "text-sm opacity-80", "Enhanced development experience" }
-                }
-                a {
-                    href: "https://discord.gg/XgGxMSkvUM",
-                    class: "bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-all transform hover:scale-105 border border-white/20",
-                    div { class: "text-3xl mb-3", "👋" }
-                    h3 { class: "font-semibold mb-2", "Community Discord" }
-                    p { class: "text-sm opacity-80", "Join our friendly community" }
-                }
-            }
-        }
-    }
-}
-
-/// FAQ
-#[component]
-fn FAQ() -> Element {
-    rsx! {
-        div { class: "bg-gray-900 py-24 sm:py-32",
-            div { class: "mx-auto max-w-7xl px-6 lg:px-8",
-                dl { class: "grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3",
-                    div { class: "mx-auto flex max-w-xs flex-col gap-y-4",
-                        dt { class: "text-gray-400", "Transactions every 24 hours" }
-                        dd { class: "order-first text-3xl font-semibold tracking-tight text-bamboo-800 sm:text-5xl", "44 million" }
-                    }
-                    div { class: "mx-auto flex max-w-xs flex-col gap-y-4",
-                        dt { class: "text-gray-400", "Assets under holding" }
-                        dd { class: "order-first text-3xl font-semibold tracking-tight text-bamboo-800 sm:text-5xl", "$119 trillion" }
-                    }
-                    div { class: "mx-auto flex max-w-xs flex-col gap-y-4",
-                        dt { class: "text-gray-400", "New users annually" }
-                        dd { class: "order-first text-3xl font-semibold tracking-tight text-bamboo-800 sm:text-5xl", "46,000" }
-                    }
-                }
-            }
-        }
-    }
-}
-
-/// Call-to-action component
-#[component]
-fn CallToAction() -> Element {
-    rsx! {
-        div { class: "bg-forest-100 py-24",
-            div { class: "mx-auto max-w-7xl px-6 lg:flex lg:items-center lg:justify-between lg:px-8",
-                h2 { class: "max-w-2xl text-4xl font-semibold tracking-tight text-gray-900 lg:text-5xl",
-                    "Ready to dive in? "
-                    br { class: "hidden sm:inline" }
-                    span { class: "text-bamboo-600", "Start your free trial today." }
-                }
-                div { class: "mt-10 flex flex-col sm:flex-row items-center gap-4 lg:mt-0 lg:shrink-0",
-                    a {
-                        href: "/",
-                        class: "w-full sm:w-auto rounded-lg bg-bamboo-600 px-6 py-3 text-base font-semibold text-white shadow-lg hover:bg-bamboo-500 focus:outline-none focus:ring-2 focus:ring-bamboo-600 focus:ring-offset-2 transition-colors",
-                        "Get started"
-                    }
-                    a {
-                        href: "/",
-                        class: "w-full sm:w-auto text-base font-semibold text-gray-900 hover:text-bamboo-600 transition-colors flex items-center justify-center",
-                        "Learn more "
-                        span { class: "ml-2", "→" }
-                    }
-                }
-            }
-        }
-    }
-}
-
-/// Footer
-#[component]
-fn Footer() -> Element {
-    rsx! {
-        footer { class: "bg-bamboo-500",
-            div { class: "mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8",
-
-                p { class: "mt-8 text-center text-sm leading-6 text-gray-600 md:order-1 md:mt-0",
-                    "© 2025 Toki, Inc. All rights reserved."
-                }
-            }
-        }
     }
 }
 
@@ -259,25 +133,128 @@ pub fn Blog(id: i32) -> Element {
 /// Shared navbar component
 #[component]
 fn Navbar() -> Element {
+    let mut mobile_menu_open = use_signal(|| false);
+
     rsx! {
-        nav { class: "bg-white shadow-sm border-b border-gray-200",
-            div { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
-                div { class: "flex justify-between h-16",
-                    div { class: "flex items-center space-x-8",
-                        Link {
-                            to: Route::Home {},
-                            class: "text-gray-900 hover:text-bamboo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors",
-                            "🏠 Home"
+        header { class: "bg-white",
+            nav {
+                class: "mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8",
+                "aria-label": "Global",
+                Link {
+                    to: Route::Home {},
+                    class: "-m-1.5 p-1.5",
+                    span { class: "sr-only", "Your Company" }
+                    img {
+                        class: "h-8 w-auto",
+                        src: "https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600",
+                        alt: ""
+                    }
+                }
+                div { class: "flex lg:hidden",
+                    button {
+                        r#type: "button",
+                        class: "-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700",
+                        onclick: move |_| mobile_menu_open.set(true),
+                        span { class: "sr-only bg-red-500", "Open main menu" }
+                        svg {
+                            class: "size-6",
+                            fill: "none",
+                            view_box: "0 0 24 24",
+                            "stroke-width": "1.5",
+                            stroke: "currentColor",
+                            "aria-hidden": "true",
+                            "data-slot": "icon",
+                            path {
+                                view_box: "0 0 24 24",
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round",
+                                d: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                            }
                         }
-                        Link {
-                            to: Route::About {},
-                            class: "text-gray-700 hover:text-bamboo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors",
-                            "ℹ️ About"
+                    }
+                }
+                div { class: "hidden lg:flex lg:gap-x-12",
+                    Link {
+                        to: Route::Home {},
+                        class: "text-sm/6 font-semibold text-gray-900",
+                        "🏠 Home"
+                    }
+                    Link {
+                        to: Route::About {},
+                        class: "text-sm/6 font-semibold text-gray-900",
+                        "ℹ️ About"
+                    }
+                    Link {
+                        to: Route::Blog { id: 1 },
+                        class: "text-sm/6 font-semibold text-gray-900",
+                        "📝 Blog"
+                    }
+                }
+            }
+
+            if mobile_menu_open() {
+                div {
+                    class: "lg:hidden",
+                    role: "dialog",
+                    "aria-modal": "true",
+                    div { class: "fixed inset-0 z-10" }
+                    div {
+                        class: "fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10",
+                        div { class: "flex items-center justify-between",
+                            Link {
+                                to: Route::Home {},
+                                class: "-m-1.5 p-1.5",
+                                span { class: "sr-only", "Your Company" }
+                                img {
+                                    class: "h-8 w-auto",
+                                    src: "https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600",
+                                    alt: ""
+                                }
+                            }
+                            button {
+                                r#type: "button",
+                                class: "-m-2.5 rounded-md p-2.5 text-gray-700",
+                                onclick: move |_| mobile_menu_open.set(false),
+                                span { class: "sr-only", "Close menu" }
+                                svg {
+                                    class: "size-6",
+                                    fill: "none",
+                                    view_box: "0 0 24 24",
+                                    "stroke-width": "1.5",
+                                    stroke: "currentColor",
+                                    "aria-hidden": "true",
+                                    "data-slot": "icon",
+                                    path {
+                                        "stroke-linecap": "round",
+                                        "stroke-linejoin": "round",
+                                        d: "M6 18 18 6M6 6l12 12"
+                                    }
+                                }
+                            }
                         }
-                        Link {
-                            to: Route::Blog { id: 1 },
-                            class: "text-gray-700 hover:text-bamboo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors",
-                            "📝 Blog"
+                        div { class: "mt-6 flow-root",
+                            div { class: "-my-6 divide-y divide-gray-500/10",
+                                div { class: "space-y-2 py-6",
+                                    Link {
+                                        to: Route::Home {},
+                                        class: "-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50",
+                                        onclick: move |_| mobile_menu_open.set(false),
+                                        "🏠 Home"
+                                    }
+                                    Link {
+                                        to: Route::About {},
+                                        class: "-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50",
+                                        onclick: move |_| mobile_menu_open.set(false),
+                                        "ℹ️ About"
+                                    }
+                                    Link {
+                                        to: Route::Blog { id: 1 },
+                                        class: "-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50",
+                                        onclick: move |_| mobile_menu_open.set(false),
+                                        "📝 Blog"
+                                    }
+                                }
+                            }
                         }
                     }
                 }
