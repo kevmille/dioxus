@@ -1,10 +1,5 @@
 mod components;
 use components::{CallToAction, Footer, Hero, FAQ};
-
-use crate::CallToAction::CallToAction;
-use crate::Footer::Footer;
-use crate::Hero::Hero;
-use crate::FAQ::FAQ;
 use dioxus::prelude::*;
 
 #[derive(Debug, Clone, Routable, PartialEq)]
