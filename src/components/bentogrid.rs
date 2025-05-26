@@ -1,108 +1,172 @@
 /// Bento grid component
 use dioxus::prelude::*;
 
+const AMERASIANWORLD_AVIF: Asset = asset!("/assets/amerasianworld.avif");
+const AMERASIANWORLD_WEBP: Asset = asset!("/assets/amerasianworld.webp");
+const AMERASIANWORLD_JPG: Asset = asset!("/assets/amerasianworld.jpg");
+const BLOCKCHAIN_AVIF: Asset = asset!("/assets/blockchain.avif");
+const BLOCKCHAIN_WEBP: Asset = asset!("/assets/blockchain.webp");
+const BLOCKCHAIN_JPG: Asset = asset!("/assets/blockchain.jpg");
+
 pub fn BentoGrid() -> Element {
     rsx! {
-        div { class: "bg-gray-50 py-24 sm:py-32",
+
+        div { class: "bg-forest-100 py-12 sm:py-16",
             div { class: "mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8",
-                h2 { class: "text-center text-base/7 font-semibold text-indigo-600", "Deploy faster" }
-                p { class: "mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-gray-950 sm:text-5xl",
-                    "Everything you need to deploy your app"
+                h2 { class: "text-lg font-semibold text-sakura-600", "I learned Windows in the Russian language." }
+                p { class: "mt-2 max-w-lg text-4xl font-semibold tracking-tight text-pretty text-bamboo-900 sm:text-5xl",
+                    "A world tech learner"
                 }
-                div { class: "mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2",
-                    div { class: "relative lg:row-span-2",
-                        div { class: "absolute inset-px rounded-lg bg-white lg:rounded-l-4xl" }
-                        div { class: "relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-l-[calc(2rem+1px)]",
-                            div { class: "px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0",
-                                p { class: "mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center",
-                                    "Mobile friendly"
+                p { class: "mt-4 max-w-full text-base font-semibold tracking-tight text-pretty text-bamboo-800 sm:text-lg",
+                    "Though I grew up in a supportive tech environment, I never appreciated IT until living overseas. I will tell this story at this website."
+                }
+                p { class: "mt-4 max-w-full text-base font-semibold tracking-tight text-pretty text-bamboo-800 sm:text-lg",
+                    strong { "Please note:" } " This site is work in progress. I am building this website to learn both Rust and Dioxus."
+                }
+                div { class: "mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2",
+                    div { class: "relative lg:col-span-3",
+                        div { class: "absolute inset-px rounded-lg bg-white max-lg:rounded-t-4xl lg:rounded-tl-4xl" }
+                        div { class: "relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tl-[calc(2rem+1px)]",
+                            picture {
+                                source {
+                                    "media": "(min-width: 1px)",
+                                    "srcset": "{AMERASIANWORLD_AVIF}",
+                                    "type": "image/avif"
                                 }
-                                p { class: "mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center",
-                                    "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo."
+                                source {
+                                    "media": "(min-width: 1px)",
+                                    "srcset": "{AMERASIANWORLD_WEBP}",
+                                    "type": "image/webp"
                                 }
-                            }
-                            div { class: "@container relative min-h-120 w-full grow max-lg:mx-auto max-lg:max-w-sm",
-                                div { class: "absolute inset-x-10 top-10 bottom-0 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-gray-900 shadow-2xl",
-                                    img {
-                                        alt: "",
-                                        class: "size-full object-cover object-top",
-                                        src: "https://tailwindcss.com/plus-assets/img/component-images/bento-03-mobile-friendly.png",
-                                    }
-                                }
-                            }
-                        }
-                        div { class: "pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 lg:rounded-l-4xl" }
-                    }
-                    div { class: "relative max-lg:row-start-1",
-                        div { class: "absolute inset-px rounded-lg bg-white max-lg:rounded-t-4xl" }
-                        div { class: "relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]",
-                            div { class: "px-8 pt-8 sm:px-10 sm:pt-10",
-                                p { class: "mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center",
-                                    "Performance"
-                                }
-                                p { class: "mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center",
-                                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit maiores impedit."
-                                }
-                            }
-                            div { class: "flex flex-1 items-center justify-center px-8 max-lg:pt-10 max-lg:pb-12 sm:px-10 lg:pb-2",
                                 img {
-                                    alt: "",
-                                    class: "w-full max-lg:max-w-xs",
-                                    src: "https://tailwindcss.com/plus-assets/img/component-images/bento-03-performance.png",
+                                    alt: "Amerasian World screenshot",
+                                    class: "max-w-full rounded-xl h-90 mx-auto ring-1 ring-forest-800",
+                                    src: "{AMERASIANWORLD_JPG}"
+                                }
+                            }
+                            div { class: "p-10 pt-4",
+                                h3 { class: "text-lg font-semibold text-sakura-600",
+                                    "Salaam Central Asia"
+                                }
+                                p { class: "mt-2 max-w-lg text-lg font-semibold text-bamboo-900",
+                                    "My web development journey started after my Peace Corps experience in Kazakhstan and four month stint with Accels in the Kyrgyz Republic. "
+                                    "Website: " Link { to: "https://amerasianworld.com", class: "text-sakura-500 hover:text-indigo-500", " AmerasianWorld.com" } "."
                                 }
                             }
                         }
-                        div { class: "pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 max-lg:rounded-t-4xl" }
+                        div { class: "pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-bamboo/5 max-lg:rounded-t-4xl lg:rounded-tl-4xl" }
                     }
-                    div { class: "relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2",
+                    div { class: "relative lg:col-span-3",
+                        div { class: "absolute inset-px rounded-lg bg-white lg:rounded-tr-4xl" }
+                        div { class: "relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-tr-[calc(2rem+1px)]",
+                            picture {
+                                source {
+                                    "media": "(min-width: 1px)",
+                                    "srcset": "{BLOCKCHAIN_AVIF}",
+                                    "type": "image/avif"
+                                }
+                                source {
+                                    "media": "(min-width: 1px)",
+                                    "srcset": "{BLOCKCHAIN_WEBP}",
+                                    "type": "image/webp"
+                                }
+                                img {
+                                    alt: "Blockchain with nodes screenshot",
+                                    class: "max-w-full rounded-xl h-90",
+                                    src: "{BLOCKCHAIN_JPG}"
+                                }
+                            }
+                            div { class: "p-10 pt-4",
+                                h3 { class: "text-lg font-semibold text-sakura-600",
+                                    "Blockchains"
+                                }
+                                p { class: "mt-2 max-w-lg text-lg font-semibold text-bamboo-900",
+                                    "I started trading in cryptocurrencies, but I knew the importance of the blockchain overseas. My interests in the blockchain are the main reasons why I chose Rust."
+                                }
+                            }
+                        }
+                        div { class: "pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-bamboo/5 lg:rounded-tr-4xl" }
+                    }
+                    div { class: "relative lg:col-span-2",
+                        div { class: "absolute inset-px rounded-lg bg-white lg:rounded-bl-4xl" }
+                        div { class: "relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-bl-[calc(2rem+1px)]",
+                            svg {
+                                role: "img",
+                                view_box: "0 0 24 24",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                class: "h-80 object-cover object-left pt-2",
+                                title { "Podman" }
+                                path {
+                                    d: "M17.2.275L6.75.308a.259.259 0 0 0-.203.098L.056 8.602a.259.259 0 0 0-.05.219l2.356 10.194a.26.26 0 0 0 .14.174l9.43 4.511a.258.258 0 0 0 .224-.002l9.401-4.566a.259.259 0 0 0 .141-.175L23.993 8.75a.258.258 0 0 0-.051-.22L17.403.374A.259.259 0 0 0 17.2.275zm-.123.517l6.385 7.966-2.242 9.964-9.177 4.457-9.205-4.402L.54 8.827 6.875.824zM11.46 2.857c-.933 0-1.84.1-2.426.332h-.002c-1.554.569-2.725 2.105-3.074 3.952v.004c-.309 1.463-.392 2.703-.556 3.824-.07.481-.159.94-.283 1.387-.628.497-1.079 1.263-1.244 2.138v.004c-.116.547-.181 1.04-.237 1.5h-.644v.518h8.891c-.061.464-.122.996-.181 1.42H7.596v.517h7.939c-.242-.078-.486-.218-.756-.502h-.697l-.85.488-.232-.396.162-.092h-1.069c.113-.776.17-1.601.373-2.564v-.004c.22-1.164.96-2.112 1.895-2.453l.004-.002h.002c.318-.127.928-.205 1.543-.205.613 0 1.244.075 1.622.207.935.341 1.676 1.29 1.895 2.453v.004c.204.963.26 1.788.373 2.564h-.742l.162.092-.233.396-.85-.488h-.75c-.219.25-.474.412-.747.502h4.392v-.518h-.842c-.103-.743-.181-1.67-.382-2.623v-.002a4.14 4.14 0 0 0-.264-.863h1.863v-.517h-2.13a3.488 3.488 0 0 0-.8-.906h1.8v-.518H17.95a8.862 8.862 0 0 1-.193-.775h1.484v-.518h-1.576c-.013-.081-.027-.161-.039-.244-.164-1.12-.246-2.36-.555-3.824v-.004c-.348-1.848-1.52-3.383-3.075-3.952l-.002-.002h-.002c-.65-.227-1.596-.33-2.531-.33zm0 .386c.904 0 1.833.11 2.404.309h.002c1.4.514 2.5 1.934 2.826 3.666v.003c.303 1.436.385 2.66.552 3.805.076.515.173 1.013.315 1.505-.449-.135-1.05-.197-1.648-.197-.12 0-.236.003-.352.008l-1.863-1.865a2.17 2.17 0 0 0 .11-.246l2.13 1.23.13-.224-2.185-1.262c.016-.069.027-.14.036-.21l2.302.616.068-.248-2.354-.63c-.02-1.153-1.008-2.078-2.208-2.078-1.205 0-2.196.931-2.206 2.091l-2.303.617.066.25 2.252-.605c.01.076.024.151.041.224L7.436 11.24l.129.222 2.087-1.207c.034.089.074.176.12.258l-1.266 1.266a6.959 6.959 0 0 0-1.045-.075c-.603 0-1.186.064-1.578.22a2.668 2.668 0 0 0-.285.124c.076-.335.137-.675.187-1.021.168-1.144.248-2.37.551-3.805l.002-.001v-.002c.326-1.733 1.426-3.153 2.828-3.666h.002l.004-.002c.488-.194 1.381-.307 2.287-.307zM8.473 5.194a1.295 1.295 0 0 0-.965.502l-.117.153.306.236.12-.152a.923.923 0 0 1 .673-.352.92.92 0 0 1 .67.262l.139.134.271-.275-.136-.137a1.293 1.293 0 0 0-.961-.37zm6.39 0a1.289 1.289 0 0 0-.96.371l-.138.137.274.275.136-.134a.923.923 0 0 1 .672-.262.923.923 0 0 1 .674.352l.119.152.307-.236-.12-.153c-.23-.3-.587-.486-.964-.502zM8.53 6.708c-.642 0-1.164.538-1.164 1.19 0 .65.522 1.187 1.164 1.187.643 0 1.164-.536 1.164-1.188 0-.651-.521-1.19-1.164-1.19zm6.273 0c-.643 0-1.162.538-1.162 1.19 0 .65.52 1.187 1.162 1.187.643 0 1.164-.536 1.164-1.188 0-.651-.521-1.19-1.164-1.19zm-6.273.387c.428 0 .776.355.776.802 0 .447-.348.8-.776.8a.785.785 0 0 1-.775-.8c0-.035.002-.07.006-.103.07.191.248.318.445.318a.487.487 0 0 0 .477-.496.49.49 0 0 0-.383-.486.759.759 0 0 1 .23-.035zm6.273 0c.428 0 .777.355.777.802 0 .447-.349.8-.777.8a.785.785 0 0 1-.77-.9c.072.19.248.315.444.315a.486.486 0 0 0 .479-.496.491.491 0 0 0-.383-.484.755.755 0 0 1 .23-.037zm-3.08.716c1.012 0 1.819.775 1.819 1.723 0 .947-.807 1.722-1.819 1.722s-1.82-.775-1.82-1.722c0-.948.808-1.723 1.82-1.723zm-.002.528c-.142 0-.258.043-.355.076a.804.804 0 0 1-.232.054c-.107 0-.2.047-.268.127a.568.568 0 0 0-.104.207c-.04.134-.062.268-.08.315a.276.276 0 0 0 .032.25c.033.056.071.1.117.146.09.092.206.183.322.268.12.088.237.166.326.224l-.008.09c-.043.036-.14.102-.324.178a.533.533 0 0 1-.299.025.43.43 0 0 1-.236-.172c.015-.138.044-.293.068-.449l-.376-.095c-.05.238-.067.43-.094.64l.037.059c.143.224.318.344.506.392a.908.908 0 0 0 .52-.033 1.57 1.57 0 0 0 .444-.242c.088.067.244.174.446.242a.908.908 0 0 0 .52.033.868.868 0 0 0 .507-.392l.037-.059a6.292 6.292 0 0 0-.096-.637l-.377.092c.032.148.051.32.07.451a.434.434 0 0 1-.237.17.533.533 0 0 1-.3-.025c-.178-.068-.272-.14-.325-.178l-.006-.084c.09-.058.209-.137.336-.23.115-.085.231-.176.322-.268a.72.72 0 0 0 .117-.146.273.273 0 0 0 .031-.25c-.018-.047-.039-.181-.08-.315a.564.564 0 0 0-.103-.207.343.343 0 0 0-.268-.127.815.815 0 0 1-.234-.054c-.097-.033-.212-.076-.354-.076zm.002.386c.057 0 .134.024.23.057.09.03.208.07.337.076.04.102.06.237.09.338a.361.361 0 0 1-.041.045 2.66 2.66 0 0 1-.276.228c-.165.122-.271.188-.342.233a5.287 5.287 0 0 1-.34-.233 2.557 2.557 0 0 1-.275-.228.34.34 0 0 1-.04-.047c.035-.119.046-.234.089-.34.08.012.246-.042.336-.072a.837.837 0 0 1 .232-.057zm-3.234.61a.635.635 0 0 0-.611.517l1.084-.289a.614.614 0 0 0-.473-.228zm6.336 0a.61.61 0 0 0-.436.187c.352.096.69.184 1.033.275a.632.632 0 0 0-.597-.462zm-.623.607c-.007.035-.002.07-.002.103l.921.532a.648.648 0 0 0 .276-.313l-1.195-.322zm-5.086.05l-1.18.315c.078.15.207.264.362.316l.797-.46c.018-.059.015-.12.021-.17zm4.441.714l1.656 1.658a4.19 4.19 0 0 0-.826.146l-.95-1.647a2.51 2.51 0 0 0 .12-.157zm-3.646.03c.04.055.083.118.129.169l-.658 1.134a2.656 2.656 0 0 0-.276-.119l-.002-.002a3.3 3.3 0 0 0-.292-.082zm3.338.317l.892 1.547c-.623.251-1.149.725-1.523 1.33h-1.652c-.262-.75-.741-1.38-1.358-1.764l.623-1.082c.394.347.919.559 1.492.559a2.25 2.25 0 0 0 1.526-.59zM7.46 12.09c.574 0 1.167.073 1.518.195.867.319 1.555 1.203 1.76 2.285l.001.002v.002c.109.513.173.98.227 1.424H9.86a.386.386 0 0 0-.494 0H9.11a1.351 1.351 0 0 0-.078-.418.799.799 0 0 0 .569.238c.45 0 .814-.375.814-.828a.824.824 0 0 0-.814-.828.822.822 0 0 0-.791 1.016 1.495 1.495 0 0 0-1.18-.559c-.798 0-1.46.611-1.48 1.38h-.342a.386.386 0 0 0-.494 0H4.028c.054-.445.116-.912.224-1.425l.002-.002v-.002c.205-1.084.894-1.97 1.764-2.287h.002l.004-.002c.295-.117.863-.191 1.437-.19zm-1.91 1.105a.898.898 0 0 0-.67.348l-.119.154.307.237.119-.155a.525.525 0 0 1 .379-.197.52.52 0 0 1 .377.147l.138.136.272-.275-.137-.137a.895.895 0 0 0-.666-.258zm4.094 0a.9.9 0 0 0-.668.258l-.137.137.273.275.137-.136a.522.522 0 0 1 .377-.147.525.525 0 0 1 .379.197l.119.155.307-.237-.12-.154a.894.894 0 0 0-.667-.348zm4.222.735a.947.947 0 0 0-.707.365l-.117.154.306.237.12-.155a.568.568 0 0 1 .413-.213.571.571 0 0 1 .414.159l.14.136.27-.275-.138-.137a.942.942 0 0 0-.701-.271zm4.374 0a.942.942 0 0 0-.7.271l-.14.137.272.275.139-.136a.571.571 0 0 1 .414-.159.568.568 0 0 1 .414.213l.119.155.306-.237-.117-.154a.947.947 0 0 0-.707-.365zm-12.65.232a.824.824 0 0 0-.815.828c0 .453.365.828.814.828.45 0 .815-.375.815-.828a.824.824 0 0 0-.815-.828zm5.518.285h1.242a4.137 4.137 0 0 0-.263.864v.002c-.05.237-.092.464-.127.685h-.602a16.77 16.77 0 0 0-.236-1.5l-.002-.002c-.003-.016-.009-.032-.012-.049zm-5.519.102a.43.43 0 0 1 .426.441.43.43 0 0 1-.426.442c-.22 0-.4-.171-.422-.397a.298.298 0 0 0 .215.092.31.31 0 0 0 .305-.316.317.317 0 0 0-.129-.258c.01-.001.02-.004.031-.004zm4.014 0c.235 0 .427.193.427.441a.433.433 0 0 1-.427.442.427.427 0 0 1-.422-.405.3.3 0 0 0 .256.145.31.31 0 0 0 .304-.317.314.314 0 0 0-.207-.298c.023-.004.045-.008.069-.008zm4.304.414a.865.865 0 0 0-.856.87c0 .478.382.874.856.874a.868.868 0 0 0 .857-.873.867.867 0 0 0-.857-.871zm4.292 0a.867.867 0 0 0-.814 1.14 1.597 1.597 0 0 0-1.295-.652c-.846 0-1.546.65-1.568 1.463l-1.525.408.066.248 1.477-.394c.004.028.009.06.015.087l-1.418.817.131.222 1.367-.789c.235.552.801.94 1.455.94.66 0 1.233-.397 1.463-.957l1.398.806.13-.222-1.45-.836c.005-.025.008-.053.012-.078l1.511.404.067-.248-1.563-.418a1.438 1.438 0 0 0-.107-.5c.157.186.39.303.648.303a.867.867 0 0 0 .856-.873.865.865 0 0 0-.856-.871zm-10.567.043c.598 0 1.071.444 1.092.992h-.41c.007-.01.016-.02.023-.033a.24.24 0 0 0 .025-.22c-.005-.016-.021-.102-.05-.196a.416.416 0 0 0-.078-.156.282.282 0 0 0-.225-.108.499.499 0 0 1-.129-.031c-.062-.021-.142-.05-.248-.05-.106 0-.188.029-.25.05a.49.49 0 0 1-.127.031.29.29 0 0 0-.225.108.424.424 0 0 0-.08.156c-.029.094-.043.18-.048.195a.242.242 0 0 0 .023.22c.008.014.017.023.025.034h-.41c.02-.548.494-.992 1.092-.992zm6.275.344c.259 0 .47.211.47.484a.477.477 0 0 1-.47.486.472.472 0 0 1-.467-.453.322.322 0 0 0 .246.115c.18 0 .326-.15.326-.338a.34.34 0 0 0-.156-.289c.017-.002.033-.005.05-.005zm4.292 0c.26 0 .469.211.469.484 0 .272-.21.486-.469.486a.477.477 0 0 1-.47-.486c0-.016.002-.031.004-.047a.33.33 0 0 0 .312.24c.18 0 .326-.15.326-.338a.338.338 0 0 0-.256-.332.475.475 0 0 1 .084-.007zm-10.567.24c.021 0 .063.01.125.031.086.03.117.039.186.049.012.041.022.088.033.129a1.475 1.475 0 0 1-.168.138c-.038.028-.064.045-.088.061h-.176c-.024-.016-.052-.033-.09-.06a1.602 1.602 0 0 1-.168-.14l.034-.128c.107-.014.146-.04.185-.049a.504.504 0 0 1 .127-.031zm8.458.25c.661 0 1.184.502 1.184 1.113 0 .156-.035.304-.096.44l-.002-.024-.022-.156a2.443 2.443 0 0 0-.04-.24l-.377.093.044.274a.24.24 0 0 1-.115.074.299.299 0 0 1-.168-.014c-.087-.03-.132-.063-.18-.094.057-.037.13-.084.198-.134.08-.06.16-.123.226-.19a.542.542 0 0 0 .092-.111.245.245 0 0 0 .026-.225c-.008-.019-.022-.112-.053-.21a.444.444 0 0 0-.084-.163.286.286 0 0 0-.23-.107.566.566 0 0 1-.14-.037c-.065-.022-.152-.055-.263-.055-.11 0-.195.032-.262.055a.575.575 0 0 1-.14.037.294.294 0 0 0-.23.107.436.436 0 0 0-.083.162c-.03.1-.045.192-.052.211a.246.246 0 0 0 .025.225.534.534 0 0 0 .09.111c.066.067.146.13.226.19.068.05.138.095.194.132a.57.57 0 0 1-.18.096.305.305 0 0 1-.17.014.237.237 0 0 1-.111-.076c.008-.09.026-.177.04-.272l-.376-.094c-.032.146-.045.286-.063.409a1.052 1.052 0 0 1-.09-.428c0-.611.521-1.113 1.182-1.113zm0 .623c.026 0 .074.01.14.033.066.025.169.052.206.055l.035.156c-.04.04-.112.1-.184.152-.095.07-.14.095-.197.131-.056-.036-.1-.061-.195-.13a1.236 1.236 0 0 1-.184-.157l.035-.152a1.04 1.04 0 0 0 .206-.055.523.523 0 0 1 .138-.033zm-2.22.353a.43.43 0 0 0-.385.272l.656-.176a.416.416 0 0 0-.271-.096zm4.333 0a.414.414 0 0 0-.22.07l.603.16a.426.426 0 0 0-.383-.23zm-4.054.567l-.607.162a.436.436 0 0 0 .125.113zm3.925.002l.407.234a.443.443 0 0 0 .087-.102zm-1.986.234c.067.047.165.108.285.148a.68.68 0 0 0 .389.024.57.57 0 0 0 .232-.121 1.201 1.201 0 0 1-.904.394c-.356 0-.67-.145-.885-.375a.58.58 0 0 0 .207.102c.144.036.28.014.391-.024.12-.04.218-.1.285-.148zm-9.524 1.61v.517h6.214v-.518zm3.619 1.292v.517H15.3v-.517z"
+                                }
+                            }
+                            div { class: "p-10 pt-4",
+                                h3 { class: "text-lg font-semibold text-sakura-600",
+                                    "Containers"
+                                }
+                                p { class: "mt-2 text-lg font-semibold tracking-tight text-bamboo-900",
+                                    "Docker, then Podman"
+                                }
+                                p { class: "mt-2 max-w-lg text-md font-semibold text-bamboo-800",
+                                    "On my way to Kubernetes, but now managing pods with Podman."
+                                }
+                            }
+                        }
+                        div { class: "pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-bamboo/5 lg:rounded-bl-4xl" }
+                    }
+                    div { class: "relative lg:col-span-2",
                         div { class: "absolute inset-px rounded-lg bg-white" }
                         div { class: "relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]",
-                            div { class: "px-8 pt-8 sm:px-10 sm:pt-10",
-                                p { class: "mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center",
-                                    "Security"
-                                }
-                                p { class: "mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center",
-                                    "Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi."
+                            svg {
+                                role: "img",
+                                view_box: "0 0 24 24",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                class: "h-80 object-cover pt-4",
+                                title { "Claude" }
+                                path {
+                                    d: "m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"
                                 }
                             }
-                            div { class: "@container flex flex-1 items-center max-lg:py-6 lg:pb-2",
-                                img {
-                                    alt: "",
-                                    class: "h-[min(152px,40cqw)] object-cover",
-                                    src: "https://tailwindcss.com/plus-assets/img/component-images/bento-03-security.png",
+                            div { class: "p-10 pt-4",
+                                h3 { class: "text-lg font-semibold text-sakura-600",
+                                    "AI coding tool"
+                                }
+                                p { class: "mt-2 text-lg font-semibold tracking-tight text-bamboo-900",
+                                    "Claude all the way"
+                                }
+                                p { class: "mt-2 max-w-lg text-md font-semibold text-bamboo-800",
+                                    "I use the Anthropic API nearly 100% of the time in Zed."
                                 }
                             }
                         }
-                        div { class: "pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5" }
+                        div { class: "pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-bamboo-600" }
                     }
-                    div { class: "relative lg:row-span-2",
-                        div { class: "absolute inset-px rounded-lg bg-white max-lg:rounded-b-4xl lg:rounded-r-4xl" }
-                        div { class: "relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-r-[calc(2rem+1px)]",
-                            div { class: "px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0",
-                                p { class: "mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center",
-                                    "Powerful APIs"
-                                }
-                                p { class: "mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center",
-                                    "Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget sem sodales gravida."
+                    div { class: "relative lg:col-span-2",
+                        div { class: "absolute inset-px rounded-lg bg-white max-lg:rounded-b-4xl lg:rounded-br-4xl" }
+                        div { class: "relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-br-[calc(2rem+1px)]",
+                            svg {
+                                role: "img",
+                                view_box: "0 0 24 24",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                class: "h-80 object-cover pt-2",
+                                title { "Rust" }
+                                path {
+                                    d: "M23.8346 11.7033l-1.0073-.6236a13.7268 13.7268 0 00-.0283-.2936l.8656-.8069a.3483.3483 0 00-.1154-.578l-1.1066-.414a8.4958 8.4958 0 00-.087-.2856l.6904-.9587a.3462.3462 0 00-.2257-.5446l-1.1663-.1894a9.3574 9.3574 0 00-.1407-.2622l.49-1.0761a.3437.3437 0 00-.0274-.3361.3486.3486 0 00-.3006-.154l-1.1845.0416a6.7444 6.7444 0 00-.1873-.2268l.2723-1.153a.3472.3472 0 00-.417-.4172l-1.1532.2724a14.0183 14.0183 0 00-.2278-.1873l.0415-1.1845a.3442.3442 0 00-.49-.328l-1.076.491c-.0872-.0476-.1742-.0952-.2623-.1407l-.1903-1.1673A.3483.3483 0 0016.256.955l-.9597.6905a8.4867 8.4867 0 00-.2855-.086l-.414-1.1066a.3483.3483 0 00-.5781-.1154l-.8069.8666a9.2936 9.2936 0 00-.2936-.0284L12.2946.1683a.3462.3462 0 00-.5892 0l-.6236 1.0073a13.7383 13.7383 0 00-.2936.0284L9.9803.3374a.3462.3462 0 00-.578.1154l-.4141 1.1065c-.0962.0274-.1903.0567-.2855.086L7.744.955a.3483.3483 0 00-.5447.2258L7.009 2.348a9.3574 9.3574 0 00-.2622.1407l-1.0762-.491a.3462.3462 0 00-.49.328l.0416 1.1845a7.9826 7.9826 0 00-.2278.1873L3.8413 3.425a.3472.3472 0 00-.4171.4171l.2713 1.1531c-.0628.075-.1255.1509-.1863.2268l-1.1845-.0415a.3462.3462 0 00-.328.49l.491 1.0761a9.167 9.167 0 00-.1407.2622l-1.1662.1894a.3483.3483 0 00-.2258.5446l.6904.9587a13.303 13.303 0 00-.087.2855l-1.1065.414a.3483.3483 0 00-.1155.5781l.8656.807a9.2936 9.2936 0 00-.0283.2935l-1.0073.6236a.3442.3442 0 000 .5892l1.0073.6236c.008.0982.0182.1964.0283.2936l-.8656.8079a.3462.3462 0 00.1155.578l1.1065.4141c.0273.0962.0567.1914.087.2855l-.6904.9587a.3452.3452 0 00.2268.5447l1.1662.1893c.0456.088.0922.1751.1408.2622l-.491 1.0762a.3462.3462 0 00.328.49l1.1834-.0415c.0618.0769.1235.1528.1873.2277l-.2713 1.1541a.3462.3462 0 00.4171.4161l1.153-.2713c.075.0638.151.1255.2279.1863l-.0415 1.1845a.3442.3442 0 00.49.327l1.0761-.49c.087.0486.1741.0951.2622.1407l.1903 1.1662a.3483.3483 0 00.5447.2268l.9587-.6904a9.299 9.299 0 00.2855.087l.414 1.1066a.3452.3452 0 00.5781.1154l.8079-.8656c.0972.0111.1954.0203.2936.0294l.6236 1.0073a.3472.3472 0 00.5892 0l.6236-1.0073c.0982-.0091.1964-.0183.2936-.0294l.8069.8656a.3483.3483 0 00.578-.1154l.4141-1.1066a8.4626 8.4626 0 00.2855-.087l.9587.6904a.3452.3452 0 00.5447-.2268l.1903-1.1662c.088-.0456.1751-.0931.2622-.1407l1.0762.49a.3472.3472 0 00.49-.327l-.0415-1.1845a6.7267 6.7267 0 00.2267-.1863l1.1531.2713a.3472.3472 0 00.4171-.416l-.2713-1.1542c.0628-.0749.1255-.1508.1863-.2278l1.1845.0415a.3442.3442 0 00.328-.49l-.49-1.076c.0475-.0872.0951-.1742.1407-.2623l1.1662-.1893a.3483.3483 0 00.2258-.5447l-.6904-.9587.087-.2855 1.1066-.414a.3462.3462 0 00.1154-.5781l-.8656-.8079c.0101-.0972.0202-.1954.0283-.2936l1.0073-.6236a.3442.3442 0 000-.5892zm-6.7413 8.3551a.7138.7138 0 01.2986-1.396.714.714 0 11-.2997 1.396zm-.3422-2.3142a.649.649 0 00-.7715.5l-.3573 1.6685c-1.1035.501-2.3285.7795-3.6193.7795a8.7368 8.7368 0 01-3.6951-.814l-.3574-1.6684a.648.648 0 00-.7714-.499l-1.473.3158a8.7216 8.7216 0 01-.7613-.898h7.1676c.081 0 .1356-.0141.1356-.088v-2.536c0-.074-.0536-.0881-.1356-.0881h-2.0966v-1.6077h2.2677c.2065 0 1.1065.0587 1.394 1.2088.0901.3533.2875 1.5044.4232 1.8729.1346.413.6833 1.2381 1.2685 1.2381h3.5716a.7492.7492 0 00.1296-.0131 8.7874 8.7874 0 01-.8119.9526zM6.8369 20.024a.714.714 0 11-.2997-1.396.714.714 0 01.2997 1.396zM4.1177 8.9972a.7137.7137 0 11-1.304.5791.7137.7137 0 011.304-.579zm-.8352 1.9813l1.5347-.6824a.65.65 0 00.33-.8585l-.3158-.7147h1.2432v5.6025H3.5669a8.7753 8.7753 0 01-.2834-3.348zm6.7343-.5437V8.7836h2.9601c.153 0 1.0792.1772 1.0792.8697 0 .575-.7107.7815-1.2948.7815zm10.7574 1.4862c0 .2187-.008.4363-.0243.651h-.9c-.09 0-.1265.0586-.1265.1477v.413c0 .973-.5487 1.1846-1.0296 1.2382-.4576.0517-.9648-.1913-1.0275-.4717-.2704-1.5186-.7198-1.8436-1.4305-2.4034.8817-.5599 1.799-1.386 1.799-2.4915 0-1.1936-.819-1.9458-1.3769-2.3153-.7825-.5163-1.6491-.6195-1.883-.6195H5.4682a8.7651 8.7651 0 014.907-2.7699l1.0974 1.151a.648.648 0 00.9182.0213l1.227-1.1743a8.7753 8.7753 0 016.0044 4.2762l-.8403 1.8982a.652.652 0 00.33.8585l1.6178.7188c.0283.2875.0425.577.0425.8717zm-9.3006-9.5993a.7128.7128 0 11.984 1.0316.7137.7137 0 01-.984-1.0316zm8.3389 6.71a.7107.7107 0 01.9395-.3625.7137.7137 0 11-.9405.3635z"
                                 }
                             }
-                            div { class: "relative min-h-120 w-full grow",
-                                div { class: "absolute top-10 right-0 bottom-0 left-10 overflow-hidden rounded-tl-xl bg-gray-900 shadow-2xl",
-                                    div { class: "flex bg-gray-800/40 ring-1 ring-white/5",
-                                        div { class: "-mb-px flex text-sm/6 font-medium text-gray-400",
-                                            div { class: "border-r border-b border-r-white/10 border-b-white/20 bg-white/5 px-4 py-2 text-white",
-                                                "NotificationSetting.jsx"
-                                            }
-                                            div { class: "border-r border-gray-600/10 px-4 py-2",
-                                                "App.jsx"
-                                            }
-                                        }
-                                    }
-                                    div { class: "px-6 pt-6 pb-14" }
+                            div { class: "p-10 pt-4",
+                                h3 { class: "text-lg font-semibold text-sakura-600",
+                                    "The purpose of this website"
+                                }
+                                p { class: "mt-2 text-lg font-semibold tracking-tight text-bamboo-900",
+                                    "Rust + Dioxus"
+                                }
+                                p { class: "mt-2 max-w-lg text-md font-semibold text-bamboo-800",
+                                    "Dioxus gave me an excuse to learn Rust. The recent Cetus DEX hack convinced me even more."
                                 }
                             }
                         }
-                        div { class: "pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 max-lg:rounded-b-4xl lg:rounded-r-4xl" }
+                        div { class: "pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-bamboo/5 max-lg:rounded-b-4xl lg:rounded-br-4xl" }
                     }
                 }
             }

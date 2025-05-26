@@ -14,17 +14,18 @@ pub fn Hero() -> Element {
                     div { class: "lg:pt-4 lg:pr-8",
                         div { class: "lg:max-w-lg",
                             h2 { class: "text-lg font-semibold text-sakura-500", "Learning Rust." }
-                            p { class: "mt-2 text-2xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl",
+                            p { class: "mt-2 text-2xl font-semibold tracking-tight text-pretty text-bamboo-900 sm:text-4xl",
                                 "A Rustacean convert"
                             }
-                            p { class: "mt-6 text-lg/8 text-gray-600",
-                                "I am rockypod, a fulltime webapp developer. During the day, I develop with Drupal and Twig. In my freetime, I am making the transition to Rust and Dioxus. Below will be the focus of this blog:"
+                            p { class: "mt-6 text-lg/8 text-bamboo-800",
+                                "During the day, I develop with Drupal and Twig. At night, I focus on Rust and Dioxus. This blog will focus on my transition to Rust with an emphasis on these topics:"
                             }
-                            dl { class: "mt-10 max-w-xl space-y-8 text-base/7 text-gray-600 lg:max-w-none",
+                            dl { class: "mt-10 max-w-xl space-y-8 text-base/7 text-bamboo-800 lg:max-w-none",
                                 div { class: "relative pl-9",
-                                    dt { class: "inline font-semibold text-gray-900",
+                                    dt { class: "inline font-semibold text-bamboo-900",
                                         svg {
                                             role: "img",
+                                            "aria-hidden": "true",
                                             class: "absolute top-1 left-1 size-5 text-indigo-600",
                                             view_box: "0 0 24 24",
                                             xmlns: "http://www.w3.org/2000/svg",
@@ -34,13 +35,14 @@ pub fn Hero() -> Element {
                                         " Zed + Claude AI. "
                                     }
                                     dd { class: "inline",
-                                        "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis."
+                                        "I replaced CursorAI with Zed and have not looked back. Together with Claude AI, Zed is by far one of the better IDEs for developers."
                                     }
                                 }
                                 div { class: "relative pl-9",
-                                    dt { class: "inline font-semibold text-gray-900",
+                                    dt { class: "inline font-semibold text-bamboo-900",
                                         svg {
                                             role: "img",
+                                            "aria-hidden": "true",
                                             class: "absolute top-1 left-1 size-5 text-indigo-600",
                                             view_box: "0 0 24 24",
                                             xmlns: "http://www.w3.org/2000/svg",
@@ -50,13 +52,31 @@ pub fn Hero() -> Element {
                                         " Dioxus + Tailwind CSS development. "
                                     }
                                     dd { class: "inline",
-                                        "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis."
+                                        "It took a bit of configuration, but I finally got Tailwind CSS version 4 to work with Dioxus."
                                     }
                                 }
                                 div { class: "relative pl-9",
-                                    dt { class: "inline font-semibold text-gray-900",
+                                    dt { class: "inline font-semibold text-bamboo-900",
                                         svg {
                                             role: "img",
+                                            "aria-hidden": "true",
+                                            class: "absolute top-1 left-1 size-5 text-indigo-600",
+                                            view_box: "0 0 24 24",
+                                            xmlns: "http://www.w3.org/2000/svg",
+                                            title { "Drupal" }
+                                            path { d: "M15.78 5.113C14.09 3.425 12.48 1.815 11.998 0c-.48 1.815-2.09 3.425-3.778 5.113-2.534 2.53-5.405 5.4-5.405 9.702a9.184 9.185 0 1018.368 0c0-4.303-2.871-7.171-5.405-9.702M6.72 16.954c-.563-.019-2.64-3.6 1.215-7.416l2.55 2.788a.218.218 0 01-.016.325c-.61.625-3.204 3.227-3.527 4.126-.066.186-.164.18-.222.177M12 21.677a3.158 3.158 0 01-3.158-3.159 3.291 3.291 0 01.787-2.087c.57-.696 2.37-2.655 2.37-2.655s1.774 1.988 2.367 2.649a3.09 3.09 0 01.792 2.093A3.158 3.158 0 0112 21.677m6.046-5.123c-.068.15-.223.398-.431.405-.371.014-.411-.177-.686-.583-.604-.892-5.864-6.39-6.848-7.455-.866-.935-.122-1.595.223-1.94C10.736 6.547 12 5.285 12 5.285s3.766 3.574 5.336 6.016c1.57 2.443 1.029 4.556.71 5.253" }
+                                        }
+                                        " Decoupled Drupal + Axum. "
+                                    }
+                                    dd { class: "inline",
+                                        "I fell in love with Drupal because of JSON:API. Axum is the backend API server that I plan to learn for hosting my private APIs."
+                                    }
+                                }
+                                div { class: "relative pl-9",
+                                    dt { class: "inline font-semibold text-bamboo-900",
+                                        svg {
+                                            role: "img",
+                                            "aria-hidden": "true",
                                             class: "absolute top-1 left-1 size-5 text-indigo-600",
                                             view_box: "0 0 24 24",
                                             xmlns: "http://www.w3.org/2000/svg",
@@ -66,13 +86,14 @@ pub fn Hero() -> Element {
                                         " Rocky Linux Podman server. "
                                     }
                                     dd { class: "inline",
-                                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione."
+                                        "At work Red Hat Enterprise Linux runs the show. At home, I deploy Podman containers on Rocky Linux at Linode."
                                     }
                                 }
                                 div { class: "relative pl-9",
-                                    dt { class: "inline font-semibold text-gray-900",
+                                    dt { class: "inline font-semibold text-bamboo-900",
                                         svg {
                                             role: "img",
+                                            "aria-hidden": "true",
                                             class: "absolute top-1 left-1 size-5 text-indigo-600",
                                             view_box: "0 0 24 24",
                                             xmlns: "http://www.w3.org/2000/svg",
@@ -82,7 +103,7 @@ pub fn Hero() -> Element {
                                         " Fly.io deployment. "
                                     }
                                     dd { class: "inline",
-                                        "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo."
+                                        "I was a Vercel fan until I finally tired the Fly Machines at Fly'io. A backend engineer's dream come true."
                                     }
                                 }
                             }

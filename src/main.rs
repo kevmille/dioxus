@@ -43,7 +43,6 @@ fn Home() -> Element {
     rsx! {
         Hero {}
         BentoGrid {}
-        Echo {}
         Footer {}
     }
 }
@@ -371,45 +370,4 @@ fn Navbar() -> Element {
 
         Outlet::<Route> {}
     }
-}
-
-/// Echo component that demonstrates fullstack server functions
-#[component]
-fn Echo() -> Element {
-    let mut response = use_signal(|| String::new());
-
-    rsx! {
-        div { class: "max-w-2xl mx-auto px-6 py-12",
-            div { class: "bg-white rounded-xl shadow-lg p-8",
-                h4 { class: "text-2xl font-bold text-gray-900 mb-6",
-                    "🔄 ServerFn Echo Demo"
-                }
-                div { class: "space-y-4",
-                    input {
-                        class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bamboo-500 focus:border-transparent transition-all",
-                        placeholder: "Type here to echo from server...",
-                        oninput: move |event| async move {
-                            let data = echo_server(event.value()).await.unwrap_or_else(|_| "Error".to_string());
-                            response.set(data);
-                        },
-                    }
-
-                    if !response().is_empty() {
-                        div { class: "bg-bamboo-50 border border-bamboo-200 rounded-lg p-4",
-                            p { class: "text-bamboo-800",
-                                "Server echoed: "
-                                span { class: "font-mono font-semibold", "{response}" }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-/// Echo the user input on the server
-#[server(EchoServer)]
-async fn echo_server(input: String) -> Result<String, ServerFnError> {
-    Ok(input)
 }
