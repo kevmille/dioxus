@@ -2,3 +2,9 @@
 /node_modules
 *.log
 .env
+**/target
+**/dist
+LICENSES
+LICENSE
+temp
+README.md
