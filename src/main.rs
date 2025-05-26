@@ -1,9 +1,9 @@
 mod components;
-use components::{BentoGrid, CallToAction, Footer, Hero, FAQ};
+use components::{AboutContent, BentoGrid, CallToAction, Footer, Hero, FAQ};
 use dioxus::prelude::*;
 use dioxus_free_icons::icons::fa_brands_icons::{FaCss3, FaRust};
-use dioxus_free_icons::icons::ld_icons::{LdInfo, LdPencilLine};
 use dioxus_free_icons::Icon;
+use lucide_dioxus::{Info, PencilLine};
 
 #[derive(Debug, Clone, Routable, PartialEq)]
 #[rustfmt::skip]
@@ -31,7 +31,7 @@ fn main() {
 fn App() -> Element {
     rsx! {
         document::Link { rel: "icon", href: FAVICON }
-         document::Link { rel: "icon", href: ROCKYPOD }
+        document::Link { rel: "icon", href: ROCKYPOD }
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
         Router::<Route> { }
     }
@@ -53,48 +53,7 @@ fn Home() -> Element {
 fn About() -> Element {
     rsx! {
         CallToAction {}
-        div { class: "max-w-7xl mx-auto px-6 py-12",
-            div { class: "bg-white rounded-xl shadow-lg p-8 mb-8",
-                h1 { class: "text-4xl font-bold text-gray-900 mb-6",
-                    "About Dioxus"
-                }
-                p { class: "text-lg text-green-600 bg-green-50 rounded-lg p-4 mb-6",
-                    "Check out the "
-                    Link {
-                        class: "font-semibold hover:underline hover:decoration-dashed uppercase text-green-700",
-                        rel: "noopener noreferrer",
-                        to: "https://dioxuslabs.com",
-                        "Dioxus"
-                    }
-                    " website for more information."
-                }
-
-                h2 { class: "text-2xl font-semibold text-gray-800 mb-4 uppercase tracking-wide", "Key Features" }
-                ul { class: "grid grid-cols-1 md:grid-cols-2 gap-4 mb-8",
-                    li { class: "flex items-center p-3 bg-bamboo-50 rounded-lg",
-                        span { class: "w-2 h-2 bg-bamboo-500 rounded-full mr-3" }
-                        span { class: "font-medium text-gray-700", "Modern Rust" }
-                    }
-                    li { class: "flex items-center p-3 bg-bamboo-50 rounded-lg",
-                        span { class: "w-2 h-2 bg-bamboo-500 rounded-full mr-3" }
-                        span { class: "font-medium text-gray-700", "Blazingly Fast" }
-                    }
-                    li { class: "flex items-center p-3 bg-bamboo-50 rounded-lg",
-                        span { class: "w-2 h-2 bg-bamboo-500 rounded-full mr-3" }
-                        span { class: "font-medium text-gray-700", "Responsive Design" }
-                    }
-                    li { class: "flex items-center p-3 bg-bamboo-50 rounded-lg",
-                        span { class: "w-2 h-2 bg-bamboo-500 rounded-full mr-3" }
-                        span { class: "font-medium text-gray-700", "Highly Scalable" }
-                    }
-                }
-
-                p { class: "text-lg text-blue-700 bg-blue-50 rounded-lg p-6 leading-relaxed",
-                    "Dioxus is a modern Rust framework for building web applications. It is designed to be fast, responsive, and scalable, making it an ideal choice for building large-scale web applications with the safety and performance of Rust."
-                }
-            }
-
-        }
+        AboutContent {}
         FAQ {}
         Footer {}
     }
@@ -275,11 +234,9 @@ fn Navbar() -> Element {
                     Link {
                         to: Route::About {},
                         class: "text-xl font-bold text-sakura-500 flex items-center",
-                        Icon {
-                            width: 30,
-                            height: 30,
-                            fill: "black",
-                            icon: LdInfo,
+                        Info {
+                            color: "black",
+                            size: 30,
                         }
                         span { class: "ml-2 uppercase hover:text-indigo-500 hover:underline hover:decoration-wavy", "About" }
                     }
@@ -297,11 +254,9 @@ fn Navbar() -> Element {
                     Link {
                         to: Route::Blog { id: 1 },
                         class: "text-xl font-bold text-sakura-500 flex items-center",
-                        Icon {
-                            width: 30,
-                            height: 30,
-                            fill: "black",
-                            icon: LdPencilLine,
+                        PencilLine {
+                            color: "black",
+                            size: 30,
                         }
                         span { class: "ml-2 uppercase hover:text-indigo-500 hover:underline hover:decoration-wavy", "Blog" }
                     }
@@ -367,11 +322,9 @@ fn Navbar() -> Element {
                                         to: Route::About {},
                                         class: "-mx-3 flex items-center rounded-lg px-3 py-2 text-lg font-semibold text-sakura-500 hover:bg-forest-50",
                                         onclick: move |_| mobile_menu_open.set(false),
-                                        Icon {
-                                            width: 30,
-                                            height: 30,
-                                            fill: "black",
-                                            icon: LdInfo,
+                                        Info {
+                                            color: "black",
+                                            size: 30,
                                         }
                                         span { class: "ml-2 uppercase hover:text-indigo-500", "About" }
                                     }
@@ -391,11 +344,9 @@ fn Navbar() -> Element {
                                         to: Route::Blog { id: 1 },
                                         class: "-mx-3 flex items-center rounded-lg px-3 py-2 text-lg font-semibold text-sakura-500 hover:bg-forest-50",
                                         onclick: move |_| mobile_menu_open.set(false),
-                                        Icon {
-                                            width: 30,
-                                            height: 30,
-                                            fill: "black",
-                                            icon: LdPencilLine,
+                                        PencilLine {
+                                            color: "black",
+                                            size: 30,
                                         }
                                         span { class: "ml-2 uppercase hover:text-indigo-500", "Blog" }
                                     }
