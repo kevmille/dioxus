@@ -1,6 +1,9 @@
 mod components;
-use components::{CallToAction, Footer, Hero, FAQ};
+use components::{BentoGrid, CallToAction, Footer, Hero, FAQ};
 use dioxus::prelude::*;
+use dioxus_free_icons::icons::fa_brands_icons::{FaCss3, FaRust};
+use dioxus_free_icons::icons::ld_icons::{LdInfo, LdPencilLine};
+use dioxus_free_icons::Icon;
 
 #[derive(Debug, Clone, Routable, PartialEq)]
 #[rustfmt::skip]
@@ -10,11 +13,14 @@ enum Route {
     Home {},
     #[route("/about")]
     About {},
+    #[route("/dioxus-tailwind")]
+    DioxusTailwind {},
     #[route("/blog/:id")]
     Blog { id: i32 },
 }
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
+const ROCKYPOD: Asset = asset!("/assets/rockypod.svg");
 const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
 
 fn main() {
@@ -25,6 +31,7 @@ fn main() {
 fn App() -> Element {
     rsx! {
         document::Link { rel: "icon", href: FAVICON }
+         document::Link { rel: "icon", href: ROCKYPOD }
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
         Router::<Route> { }
     }
@@ -35,6 +42,7 @@ fn App() -> Element {
 fn Home() -> Element {
     rsx! {
         Hero {}
+        BentoGrid {}
         Echo {}
         Footer {}
     }
@@ -92,6 +100,86 @@ fn About() -> Element {
     }
 }
 
+/// Dioxus Tailwind page
+#[component]
+pub fn DioxusTailwind() -> Element {
+    let package_json = r#"
+{
+  "name": "cryptonezumi.com-dioxus",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently \"npm run css:watch\" \"dx serve\"",
+    "build": "npm run css:build && dx build --release",
+    "css:build": "tailwindcss -i ./assets/input.css -o ./assets/tailwind.css",
+    "css:watch": "tailwindcss -i ./assets/input.css -o ./assets/tailwind.css --watch"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.7",
+    "tailwindcss": "^4.1.7"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
+"#;
+
+    rsx! {
+        div { class: "bg-bamboo-50 px-6 py-32 lg:px-8",
+            div { class: "mx-auto max-w-3xl text-bamboo-800",
+                p { class: "font-bold text-sakura-800 uppercase", "Tailwind 4" }
+                h1 { class: "mt-2 text-4xl font-bold tracking-tight text-pretty text-sakura-500 sm:text-5xl",
+                    "Dioxus + Tailwind CSS"
+                }
+                p { class: "mt-6 text-xl font-bold",
+                    "Tailwind 4 requires changes to the initial setup process for Dioxus."
+                }
+                div { class: "mt-10 text-lg font-semibold max-w-2xl",
+                    p {
+                        "With the release of Tailwind 4 came some changes that removed several older steps during the installation process. You just need to install the Tailwind CLI. You no longer need to use the npx tailwindcss init command."
+                        br {}
+                        br {}
+                        "When you install the Dioxus CLI, select false for TailwindCSS. If you select true, you will get the setup for Tailwind 3. Then go to the following URL and install the Tailwind CLI: "
+                        br {}
+                        br {}
+                        Link {
+                            to: "https://tailwindcss.com/docs/installation/tailwind-cli",
+                            rel: "noopener noreferrer",
+                            class: "text-sakura-500 hover:underline hover:text-indigo-600 hover:decoration-indigo-600 hover:decoration-wavy ml-4",
+                            "https://tailwindcss.com/docs/installation/tailwind-cli"
+                        }
+                        br {}
+                        br {}
+                        "Be sure to place " strong{"input.css"}  " and " strong{"tailwind.css"} " in the " strong{"assets"} " folder."
+                    }
+                    p { class: "mt-8",
+                        "You will not need " strong{"tailwind.config.js"} " with Tailwind 4. For " strong{"input.css"} ", just add "
+                       br{} br{} strong{ class: "ml-4", "@import tailwindcss;"} br{} br{} " to the file. All other of your customizations will added to this file as well."
+                    }
+                    p { class: "mt-8",
+                        "Now for the important part, install the " strong{"concurrently"} " package. This will allow you to run both dx and tailwindcss concurrently, meaning your Tailwind changes will get rendered (Yes, this is one of the main reasons your new Tailwind classes were not being rebuilt.)."
+                    }
+                    p { class: "mt-8 bg-gray-900 text-green-200 p-4 rounded overflow-x-auto text-sm",
+                        "$ npm install --save-dev concurrently"
+                    }
+                    p { class: "mt-8",
+                        "Check the relative paths for both input.css and tailwindcss. Update your " strong{"package.json"} " file to match the following:"
+                    }
+                    pre { class: "mt-8 bg-gray-900 text-green-200 p-4 rounded overflow-x-auto text-sm",
+                        code { class: "language-json", "{package_json}" }
+                    }
+                    p { class: "mt-8",
+                        "Now you can execute the following command in your project root folder to run tailwindcss and dx concurrently:"
+                    }
+                    p { class: "mt-8 bg-gray-900 text-green-200 p-4 rounded overflow-x-auto text-sm",
+                        "$ npm run dev"
+                    }
+                }
+            }
+        }
+        Footer {}
+    }
+}
+
 /// Blog page
 #[component]
 pub fn Blog(id: i32) -> Element {
@@ -131,26 +219,26 @@ fn Navbar() -> Element {
     let mut mobile_menu_open = use_signal(|| false);
 
     rsx! {
-        header { class: "bg-white",
+        header { class: "bg-sakura-100 border-b-2 border-forest-700",
             nav {
                 class: "mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8",
                 "aria-label": "Global",
                 Link {
                     to: Route::Home {},
                     class: "-m-1.5 p-1.5",
-                    span { class: "sr-only", "Your Company" }
+                    span { class: "sr-only", "CryptoNezumi.com" }
                     img {
-                        class: "h-8 w-auto",
-                        src: "https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600",
-                        alt: ""
+                        class: "h-18 w-auto rounded-full border border-sakura-800 border-4",
+                        src: ROCKYPOD,
+                        alt: "RockyPod Avatar"
                     }
                 }
                 div { class: "flex lg:hidden",
                     button {
                         r#type: "button",
-                        class: "-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700",
+                        class: "-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-sakura-900 hover:bg-sakura-100",
                         onclick: move |_| mobile_menu_open.set(true),
-                        span { class: "sr-only bg-red-500", "Open main menu" }
+                        span { class: "sr-only", "Open main menu" }
                         svg {
                             class: "size-6",
                             fill: "none",
@@ -171,18 +259,47 @@ fn Navbar() -> Element {
                 div { class: "hidden lg:flex lg:gap-x-12",
                     Link {
                         to: Route::Home {},
-                        class: "text-sm/6 font-semibold text-gray-900",
-                        "🏠 Home"
+                        class: "text-xl font-bold text-sakura-500 flex items-center",
+                        Icon {
+                            width: 30,
+                            height: 30,
+                            fill: "black",
+                            icon: FaRust,
+                        }
+                        span { class: "ml-2 uppercase hover:text-indigo-500 hover:underline hover:decoration-wavy", "Home" }
                     }
                     Link {
                         to: Route::About {},
-                        class: "text-sm/6 font-semibold text-gray-900",
-                        "ℹ️ About"
+                        class: "text-xl font-bold text-sakura-500 flex items-center",
+                        Icon {
+                            width: 30,
+                            height: 30,
+                            fill: "black",
+                            icon: LdInfo,
+                        }
+                        span { class: "ml-2 uppercase hover:text-indigo-500 hover:underline hover:decoration-wavy", "About" }
+                    }
+                    Link {
+                        to: Route::DioxusTailwind {},
+                        class: "text-xl font-bold text-sakura-500 flex items-center",
+                        Icon {
+                            width: 30,
+                            height: 30,
+                            fill: "black",
+                            icon: FaCss3,
+                        }
+                        span { class: "ml-2 uppercase hover:text-indigo-500 hover:underline hover:decoration-wavy", "Dioxus + Tailwind" }
                     }
                     Link {
                         to: Route::Blog { id: 1 },
-                        class: "text-sm/6 font-semibold text-gray-900",
-                        "📝 Blog"
+                        class: "text-xl font-bold text-sakura-500 flex items-center",
+                        Icon {
+                            width: 30,
+                            height: 30,
+                            fill: "black",
+                            icon: LdPencilLine,
+                        }
+                        span { class: "ml-2 uppercase hover:text-indigo-500 hover:underline hover:decoration-wavy", "Blog" }
                     }
                 }
             }
@@ -194,21 +311,21 @@ fn Navbar() -> Element {
                     "aria-modal": "true",
                     div { class: "fixed inset-0 z-10" }
                     div {
-                        class: "fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10",
+                        class: "fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-sakura-50 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-forest-900/10",
                         div { class: "flex items-center justify-between",
                             Link {
                                 to: Route::Home {},
                                 class: "-m-1.5 p-1.5",
-                                span { class: "sr-only", "Your Company" }
+                                span { class: "sr-only", "CryptoNezumi.com" }
                                 img {
-                                    class: "h-8 w-auto",
-                                    src: "https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600",
-                                    alt: ""
+                                    class: "h-18 w-auto rounded-full border-4 border-sakura-800",
+                                    src: ROCKYPOD,
+                                    alt: "RockyPod Avatar"
                                 }
                             }
                             button {
                                 r#type: "button",
-                                class: "-m-2.5 rounded-md p-2.5 text-gray-700",
+                                class: "-m-2.5 rounded-md p-2.5 text-sakura-900 hover:bg-sakura-100",
                                 onclick: move |_| mobile_menu_open.set(false),
                                 span { class: "sr-only", "Close menu" }
                                 svg {
@@ -232,21 +349,51 @@ fn Navbar() -> Element {
                                 div { class: "space-y-2 py-6",
                                     Link {
                                         to: Route::Home {},
-                                        class: "-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50",
+                                        class: "-mx-3 flex items-center rounded-lg px-3 py-2 text-lg font-semibold text-sakura-500 hover:bg-forest-50",
                                         onclick: move |_| mobile_menu_open.set(false),
-                                        "🏠 Home"
+                                        Icon {
+                                            width: 30,
+                                            height: 30,
+                                            fill: "black",
+                                            icon: FaRust,
+                                        }
+                                        span { class: "ml-2 uppercase hover:text-indigo-500", "Home" }
                                     }
                                     Link {
                                         to: Route::About {},
-                                        class: "-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50",
+                                        class: "-mx-3 flex items-center rounded-lg px-3 py-2 text-lg font-semibold text-sakura-500 hover:bg-forest-50",
                                         onclick: move |_| mobile_menu_open.set(false),
-                                        "ℹ️ About"
+                                        Icon {
+                                            width: 30,
+                                            height: 30,
+                                            fill: "black",
+                                            icon: LdInfo,
+                                        }
+                                        span { class: "ml-2 uppercase hover:text-indigo-500", "About" }
+                                    }
+                                    Link {
+                                        to: Route::DioxusTailwind {},
+                                        class: "-mx-3 flex items-center rounded-lg px-3 py-2 text-lg font-semibold text-sakura-500 hover:bg-forest-50",
+                                        onclick: move |_| mobile_menu_open.set(false),
+                                        Icon {
+                                            width: 30,
+                                            height: 30,
+                                            fill: "black",
+                                            icon: FaCss3,
+                                        }
+                                        span { class: "ml-2 uppercase hover:text-indigo-500", "Dioxus + Tailwind" }
                                     }
                                     Link {
                                         to: Route::Blog { id: 1 },
-                                        class: "-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50",
+                                        class: "-mx-3 flex items-center rounded-lg px-3 py-2 text-lg font-semibold text-sakura-500 hover:bg-forest-50",
                                         onclick: move |_| mobile_menu_open.set(false),
-                                        "📝 Blog"
+                                        Icon {
+                                            width: 30,
+                                            height: 30,
+                                            fill: "black",
+                                            icon: LdPencilLine,
+                                        }
+                                        span { class: "ml-2 uppercase hover:text-indigo-500", "Blog" }
                                     }
                                 }
                             }

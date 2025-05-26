@@ -1,15 +1,15 @@
 {
-  "name": "dioxus-app",
+  "name": "cryptonezumi.com-dioxus",
   "version": "1.0.0",
-  "dependencies": {
-    "@tailwindcss/cli": "^4.1.7",
-    "tailwindcss": "^4.1.7"
-  },
   "scripts": {
     "dev": "concurrently \"npm run css:watch\" \"dx serve\"",
     "build": "npm run css:build && dx build --release",
-    "css:build": "tailwindcss -i ./input.css -o ./assets/tailwind.css",
-    "css:watch": "tailwindcss -i ./input.css -o ./assets/tailwind.css --watch"
+    "css:build": "tailwindcss -i ./assets/input.css -o ./assets/tailwind.css",
+    "css:watch": "tailwindcss -i ./assets/input.css -o ./assets/tailwind.css --watch"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.7",
+    "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
