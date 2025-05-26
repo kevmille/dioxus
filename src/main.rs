@@ -2,8 +2,8 @@ mod components;
 use components::{AboutContent, BentoGrid, CallToAction, Footer, Hero, FAQ};
 use dioxus::prelude::*;
 use dioxus_free_icons::icons::fa_brands_icons::{FaCss3, FaRust};
+use dioxus_free_icons::icons::ld_icons::{LdInfo, LdPencilLine};
 use dioxus_free_icons::Icon;
-use lucide_dioxus::{Info, PencilLine};
 
 #[derive(Debug, Clone, Routable, PartialEq)]
 #[rustfmt::skip]
@@ -31,7 +31,7 @@ fn main() {
 fn App() -> Element {
     rsx! {
         document::Link { rel: "icon", href: FAVICON }
-        document::Link { rel: "icon", href: ROCKYPOD }
+         document::Link { rel: "icon", href: ROCKYPOD }
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
         Router::<Route> { }
     }
@@ -234,10 +234,12 @@ fn Navbar() -> Element {
                     Link {
                         to: Route::About {},
                         class: "text-xl font-bold text-sakura-500 flex items-center",
-                        Info {
-                            color: "black",
-                            size: 30,
-                        }
+                        Icon {
+                                width: 30,
+                                height: 30,
+                                fill: "black",
+                                icon: LdInfo,
+                            }
                         span { class: "ml-2 uppercase hover:text-indigo-500 hover:underline hover:decoration-wavy", "About" }
                     }
                     Link {
@@ -254,10 +256,12 @@ fn Navbar() -> Element {
                     Link {
                         to: Route::Blog { id: 1 },
                         class: "text-xl font-bold text-sakura-500 flex items-center",
-                        PencilLine {
-                            color: "black",
-                            size: 30,
-                        }
+                        Icon {
+                                width: 30,
+                                height: 30,
+                                fill: "black",
+                                icon: LdPencilLine,
+                            }
                         span { class: "ml-2 uppercase hover:text-indigo-500 hover:underline hover:decoration-wavy", "Blog" }
                     }
                 }
@@ -322,10 +326,12 @@ fn Navbar() -> Element {
                                         to: Route::About {},
                                         class: "-mx-3 flex items-center rounded-lg px-3 py-2 text-lg font-semibold text-sakura-500 hover:bg-forest-50",
                                         onclick: move |_| mobile_menu_open.set(false),
-                                        Info {
-                                            color: "black",
-                                            size: 30,
-                                        }
+                                        Icon {
+                                                width: 30,
+                                                height: 30,
+                                                fill: "black",
+                                                icon: LdInfo,
+                                            }
                                         span { class: "ml-2 uppercase hover:text-indigo-500", "About" }
                                     }
                                     Link {
@@ -344,10 +350,12 @@ fn Navbar() -> Element {
                                         to: Route::Blog { id: 1 },
                                         class: "-mx-3 flex items-center rounded-lg px-3 py-2 text-lg font-semibold text-sakura-500 hover:bg-forest-50",
                                         onclick: move |_| mobile_menu_open.set(false),
-                                        PencilLine {
-                                            color: "black",
-                                            size: 30,
-                                        }
+                                        Icon {
+                                                width: 30,
+                                                height: 30,
+                                                fill: "black",
+                                                icon: LdPencilLine,
+                                            }
                                         span { class: "ml-2 uppercase hover:text-indigo-500", "Blog" }
                                     }
                                 }span { class: "ml-3 text-2xl text-4xl font-bold text-sakura-800",
