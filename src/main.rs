@@ -219,18 +219,22 @@ fn Navbar() -> Element {
     let mut mobile_menu_open = use_signal(|| false);
 
     rsx! {
-        header { class: "bg-sakura-100 border-b-2 border-forest-700",
+        header { class: "bg-sakura-100 border-b-2 border-forest-700 sticky top-0 z-10",
             nav {
-                class: "mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8",
+                class: "mx-auto flex max-w-7xl items-center justify-between p-2 lg:px-4",
                 "aria-label": "Global",
                 Link {
                     to: Route::Home {},
-                    class: "-m-1.5 p-1.5",
+                    class: "-m-1.5 p-1.5 flex items-center",
                     span { class: "sr-only", "CryptoNezumi.com" }
                     img {
-                        class: "h-18 w-auto rounded-full border border-sakura-800 border-4",
+                        class: "h-16 w-auto rounded-full border border-sakura-800 border-4",
                         src: ROCKYPOD,
                         alt: "RockyPod Avatar"
+                    }
+                    span { class: "ml-3 text-2xl sm:text-3xl lg:text-4xl font-bold text-sakura-800",
+                        span { class: "text-forest-800", "crypto" }
+                        "nezumi.com"
                     }
                 }
                 div { class: "flex lg:hidden",
@@ -345,7 +349,7 @@ fn Navbar() -> Element {
                             }
                         }
                         div { class: "mt-6 flow-root",
-                            div { class: "-my-6 divide-y divide-gray-500/10",
+                            div { class: "-my-6 divide-y divide-sakura-700",
                                 div { class: "space-y-2 py-6",
                                     Link {
                                         to: Route::Home {},
@@ -395,6 +399,9 @@ fn Navbar() -> Element {
                                         }
                                         span { class: "ml-2 uppercase hover:text-indigo-500", "Blog" }
                                     }
+                                }span { class: "ml-3 text-2xl text-4xl font-bold text-sakura-800",
+                                    span { class: "text-forest-800", "crypto" }
+                                    "nezumi.com"
                                 }
                             }
                         }
