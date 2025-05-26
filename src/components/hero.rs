@@ -1,3 +1,4 @@
+use dioxus::prelude::global_attributes::aria_hidden;
 /// Hero
 use dioxus::prelude::*;
 
