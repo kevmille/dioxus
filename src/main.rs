@@ -4,6 +4,7 @@ use dioxus::prelude::*;
 use dioxus_free_icons::icons::fa_brands_icons::{FaCss3, FaRust};
 use dioxus_free_icons::icons::ld_icons::{LdInfo, LdPencilLine};
 use dioxus_free_icons::Icon;
+use web_sys::window;
 
 #[derive(Debug, Clone, Routable, PartialEq)]
 #[rustfmt::skip]
@@ -27,11 +28,32 @@ fn main() {
     dioxus::launch(App);
 }
 
+fn set_meta_tags() {
+    if let Some(window) = window() {
+        if let Some(document) = window.document() {
+            // Title
+            document.set_title("Welcome to cryptonezumi.com");
+
+            // Meta tags
+            if let Ok(meta_desc) = document.create_element("meta") {
+                meta_desc.set_attribute("name", "description").ok();
+                meta_desc
+                    .set_attribute("content", "A fullstack developer learning Rust and Dioxus.")
+                    .ok();
+
+                if let Some(head) = document.head() {
+                    head.append_child(&meta_desc).ok();
+                }
+            }
+        }
+    }
+}
+
 #[component]
 fn App() -> Element {
     rsx! {
         document::Link { rel: "icon", href: FAVICON }
-         document::Link { rel: "icon", href: ROCKYPOD }
+        document::Link { rel: "icon", href: ROCKYPOD }
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
         Router::<Route> { }
     }
@@ -40,6 +62,9 @@ fn App() -> Element {
 /// Home page
 #[component]
 fn Home() -> Element {
+    use_effect(|| {
+        set_meta_tags();
+    });
     rsx! {
         Hero {}
         BentoGrid {}
