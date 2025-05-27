@@ -32,13 +32,58 @@ fn set_meta_tags() {
     if let Some(window) = window() {
         if let Some(document) = window.document() {
             // Title
-            document.set_title("Welcome to cryptonezumi.com");
+            document.set_title("Welcome - cryptonezumi.com");
 
             // Meta tags
             if let Ok(meta_desc) = document.create_element("meta") {
                 meta_desc.set_attribute("name", "description").ok();
                 meta_desc
                     .set_attribute("content", "A fullstack developer learning Rust and Dioxus.")
+                    .ok();
+
+                if let Some(head) = document.head() {
+                    head.append_child(&meta_desc).ok();
+                }
+            }
+        }
+    }
+}
+
+fn set_meta_tags_about() {
+    if let Some(window) = window() {
+        if let Some(document) = window.document() {
+            // Title
+            document.set_title("About - cryptonezumi.com");
+
+            // Meta tags
+            if let Ok(meta_desc) = document.create_element("meta") {
+                meta_desc.set_attribute("name", "description").ok();
+                meta_desc
+                    .set_attribute("content", "About cryptonezumi.com.")
+                    .ok();
+
+                if let Some(head) = document.head() {
+                    head.append_child(&meta_desc).ok();
+                }
+            }
+        }
+    }
+}
+
+fn set_meta_tags_tw() {
+    if let Some(window) = window() {
+        if let Some(document) = window.document() {
+            // Title
+            document.set_title("Dioxus + Tailwind CSS - cryptonezumi.com");
+
+            // Meta tags
+            if let Ok(meta_desc) = document.create_element("meta") {
+                meta_desc.set_attribute("name", "description").ok();
+                meta_desc
+                    .set_attribute(
+                        "content",
+                        "Tailwind 4 requires changes to the initial setup process for Dioxus.",
+                    )
                     .ok();
 
                 if let Some(head) = document.head() {
@@ -99,6 +144,9 @@ fn Home() -> Element {
 /// About page
 #[component]
 fn About() -> Element {
+    use_effect(|| {
+        set_meta_tags_about();
+    });
     rsx! {
         CallToAction {}
         AboutContent {}
@@ -129,7 +177,9 @@ pub fn DioxusTailwind() -> Element {
   }
 }
 "#;
-
+    use_effect(|| {
+        set_meta_tags_tw();
+    });
     rsx! {
         div { class: "bg-bamboo-50 px-6 py-32 lg:px-8",
             div { class: "mx-auto max-w-3xl text-bamboo-800",
