@@ -49,8 +49,32 @@ fn set_meta_tags() {
     }
 }
 
+fn inject_analytics_script() {
+    if let Some(window) = window() {
+        if let Some(document) = window.document() {
+            if let Ok(script) = document.create_element("script") {
+                script.set_attribute("defer", "").ok();
+                script
+                    .set_attribute("src", "https://stats.rockypodno.de/script.js")
+                    .ok();
+                script
+                    .set_attribute("data-website-id", "a2c48057-24d6-4c9a-b664-815071c1e3ff")
+                    .ok();
+
+                if let Some(head) = document.head() {
+                    head.append_child(&script).ok();
+                }
+            }
+        }
+    }
+}
+
 #[component]
 fn App() -> Element {
+    use_effect(|| {
+        inject_analytics_script();
+    });
+
     rsx! {
         document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "icon", href: ROCKYPOD }
