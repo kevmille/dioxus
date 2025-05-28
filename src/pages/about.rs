@@ -1,7 +1,7 @@
-/// About Main Content component
+/// About Content component
 use dioxus::prelude::*;
 
-pub fn AboutContent() -> Element {
+pub fn AboutMain() -> Element {
     rsx! {
         div { class: "max-w-7xl mx-auto px-6 py-12",
             div { class: "bg-white rounded-xl shadow-lg p-8 mb-8",
