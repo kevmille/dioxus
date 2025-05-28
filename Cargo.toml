@@ -15,7 +15,7 @@ name = "toki"
 path = "src/main.rs"
 
 [dependencies]
-dioxus = { version = "0.6", features = ["router", "web"] }
+dioxus = { version = "0.6", features = ["router", "fullstack"] }
 dioxus-free-icons = { version = "0.9", features = [
     "font-awesome-brands",
     "lucide",
