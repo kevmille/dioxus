@@ -15,18 +15,21 @@ name = "toki"
 path = "src/main.rs"
 
 [dependencies]
-dioxus = { version = "0.6.3", features = ["router", "fullstack"] }
+dioxus = { version = "0.6", features = ["router", "web"] }
 dioxus-free-icons = { version = "0.9", features = [
     "font-awesome-brands",
     "lucide",
 ] }
+# Remove dioxus-helmet for now - it's not compatible with 0.6
+# dioxus-helmet = "0.2.4"  # Comment this out
 web-sys = "0.3.77"
 
 [features]
-default = ["web"]
+default = ["web", "server"]
 web = ["dioxus/web"]
 desktop = ["dioxus/desktop"]
 mobile = ["dioxus/mobile"]
+server = ["dioxus/server"]
 
 [profile.wasm-dev]
 inherits = "dev"

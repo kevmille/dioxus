@@ -1,10 +1,13 @@
 mod components;
+mod seo;
+
+use crate::seo::{AboutHead, HomeHead, TailwindHead};
 use components::{AboutContent, BentoGrid, CallToAction, Footer, Hero, FAQ};
+
 use dioxus::prelude::*;
 use dioxus_free_icons::icons::fa_brands_icons::{FaCss3, FaRust};
 use dioxus_free_icons::icons::ld_icons::{LdInfo, LdPencilLine};
 use dioxus_free_icons::Icon;
-use web_sys::window;
 
 #[derive(Debug, Clone, Routable, PartialEq)]
 #[rustfmt::skip]
@@ -28,98 +31,8 @@ fn main() {
     dioxus::launch(App);
 }
 
-fn set_meta_tags() {
-    if let Some(window) = window() {
-        if let Some(document) = window.document() {
-            // Title
-            document.set_title("Welcome - cryptonezumi.com");
-
-            // Meta tags
-            if let Ok(meta_desc) = document.create_element("meta") {
-                meta_desc.set_attribute("name", "description").ok();
-                meta_desc
-                    .set_attribute("content", "A fullstack developer learning Rust and Dioxus.")
-                    .ok();
-
-                if let Some(head) = document.head() {
-                    head.append_child(&meta_desc).ok();
-                }
-            }
-        }
-    }
-}
-
-fn set_meta_tags_about() {
-    if let Some(window) = window() {
-        if let Some(document) = window.document() {
-            // Title
-            document.set_title("About - cryptonezumi.com");
-
-            // Meta tags
-            if let Ok(meta_desc) = document.create_element("meta") {
-                meta_desc.set_attribute("name", "description").ok();
-                meta_desc
-                    .set_attribute("content", "About cryptonezumi.com.")
-                    .ok();
-
-                if let Some(head) = document.head() {
-                    head.append_child(&meta_desc).ok();
-                }
-            }
-        }
-    }
-}
-
-fn set_meta_tags_tw() {
-    if let Some(window) = window() {
-        if let Some(document) = window.document() {
-            // Title
-            document.set_title("Dioxus + Tailwind CSS - cryptonezumi.com");
-
-            // Meta tags
-            if let Ok(meta_desc) = document.create_element("meta") {
-                meta_desc.set_attribute("name", "description").ok();
-                meta_desc
-                    .set_attribute(
-                        "content",
-                        "Tailwind 4 requires changes to the initial setup process for Dioxus.",
-                    )
-                    .ok();
-
-                if let Some(head) = document.head() {
-                    head.append_child(&meta_desc).ok();
-                }
-            }
-        }
-    }
-}
-
-fn inject_analytics_script() {
-    if let Some(window) = window() {
-        if let Some(document) = window.document() {
-            if let Ok(script) = document.create_element("script") {
-                script.set_attribute("defer", "").ok();
-                script
-                    .set_attribute("src", "https://stats.rockypodno.de/script.js")
-                    .ok();
-                script
-                    .set_attribute("data-website-id", "a2c48057-24d6-4c9a-b664-815071c1e3ff")
-                    .ok();
-
-                if let Some(head) = document.head() {
-                    head.append_child(&script).ok();
-                }
-            }
-        }
-    }
-}
-
 #[component]
 fn App() -> Element {
-    use_effect(|| {
-        inject_analytics_script();
-    });
-
     rsx! {
         document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "icon", href: ROCKYPOD }
@@ -131,10 +44,8 @@ fn App() -> Element {
 /// Home page
 #[component]
 fn Home() -> Element {
-    use_effect(|| {
-        set_meta_tags();
-    });
     rsx! {
+        HomeHead {}
         Hero {}
         BentoGrid {}
         Footer {}
@@ -144,10 +55,8 @@ fn Home() -> Element {
 /// About page
 #[component]
 fn About() -> Element {
-    use_effect(|| {
-        set_meta_tags_about();
-    });
     rsx! {
+        AboutHead {}
         CallToAction {}
         AboutContent {}
         FAQ {}
@@ -177,10 +86,8 @@ pub fn DioxusTailwind() -> Element {
   }
 }
 "#;
-    use_effect(|| {
-        set_meta_tags_tw();
-    });
     rsx! {
+        TailwindHead {}
         div { class: "bg-bamboo-50 px-6 py-32 lg:px-8",
             div { class: "mx-auto max-w-3xl text-bamboo-800",
                 p { class: "font-bold text-sakura-800 uppercase", "Tailwind 4" }
@@ -456,9 +363,6 @@ fn Navbar() -> Element {
                                             }
                                         span { class: "ml-2 uppercase hover:text-indigo-500", "Blog" }
                                     }
-                                }span { class: "ml-3 text-2xl text-4xl font-bold text-sakura-800",
-                                    span { class: "text-forest-800", "crypto" }
-                                    "nezumi.com"
                                 }
                             }
                         }

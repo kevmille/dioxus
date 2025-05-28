@@ -2,7 +2,7 @@
   "name": "cryptonezumi.com-dioxus",
   "version": "1.0.0",
   "scripts": {
-    "dev": "concurrently \"npm run css:watch\" \"dx serve\"",
+    "dev": "concurrently \"npm run css:watch\" \"dx serve --platform web\"",
     "build": "npm run css:build && dx build --release",
     "css:build": "tailwindcss -i ./assets/input.css -o ./assets/tailwind.css",
     "css:watch": "tailwindcss -i ./assets/input.css -o ./assets/tailwind.css --watch"

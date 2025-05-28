@@ -3,23 +3,18 @@ name = "dioxus-app"
 default_platform = "web"
 
 [web.app]
-
-# HTML title tag content
 title = "toki"
+
+[bundle]
+identifier = "cryptonezumi.app"
 
 [web.watcher]
 watch_path = ["src", "assets"]
 index_on_404 = true
 
-# Additional CSS style files
+# Optional: Add extra CSS or JS files if needed
 style = []
-
-# Additional JavaScript files
 script = []
 
 [web.resource.dev]
 dev = true
-
-# Javascript code file
-# serve: [dev-server] only
-script = []
