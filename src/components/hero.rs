@@ -1,9 +1,7 @@
 /// Hero
 use dioxus::prelude::*;
 
-const ZED_AVIF: Asset = asset!("/assets/zed.avif");
-const ZED_WEBP: Asset = asset!("/assets/zed.webp");
-const ZED_JPG: Asset = asset!("/assets/zed.jpg");
+static ZED: Asset = asset!("/assets/zed.png", ImageAssetOptions::new().with_avif());
 
 #[component]
 pub fn Hero() -> Element {
@@ -103,30 +101,21 @@ pub fn Hero() -> Element {
                                         " Fly.io deployment. "
                                     }
                                     dd { class: "inline",
-                                        "I was a Vercel fan until I finally tired the Fly Machines at Fly'io. A backend engineer's dream come true."
+                                        "I was a Vercel fan until I finally tired the Fly Machines at Fly.io. A backend engineer's dream come true."
                                     }
                                 }
                             }
                         }
                     }
-                    div { class: "sm:ml-16 md:ml-0",
-                        picture {
-                            source {
-                                "media": "(min-width: 1px)",
-                                "srcset": "{ZED_AVIF}",
-                                "type": "image/avif"
-                            }
-                            source {
-                                "media": "(min-width: 1px)",
-                                "srcset": "{ZED_WEBP}",
-                                "type": "image/webp"
-                            }
+                    div {
+                        class: "sm:ml-16 md:ml-0",
+
                             img {
                                 alt: "Zed screenshot",
                                 class: "max-w-none rounded-xl shadow-xl ring-2 ring-sakura-500 sm:w-228 md:-ml-4 lg:-ml-0",
-                                src: "{ZED_JPG}"
+                                src: "{ZED}"
                             }
-                        }
+
                     }
                 }
             }
