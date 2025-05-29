@@ -19,7 +19,8 @@ pub fn HomeHead() -> Element {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "cryptonezumi.com",
-      "url": "https://cryptonezumi.com"
+      "url": "https://cryptonezumi.com",
+      "sameAs": "https://rockypod.com"
     }
     "#;
 
@@ -35,15 +36,15 @@ pub fn HomeHead() -> Element {
             dioxus::document::Meta { property: "og:title", content: "Home | cryptonezumi.com" }
             dioxus::document::Meta { property: "og:type", content: "website" }
             dioxus::document::Meta { property: "og:url", content: "https://cryptonezumi.com" }
-            dioxus::document::Meta { property: "og:image", content: "https://cryptonezumi.com/assets/og-image.png" }
+            dioxus::document::Meta { property: "og:image", content: "https://cryptonezumi.com/assets/og-image.avif" }
             dioxus::document::Meta { property: "og:description", content: "During the day, I develop with Drupal and Twig. At night, I focus on Rust and Dioxus." }
             dioxus::document::Meta { property: "og:site_name", content: "cryptonezumi.com" }
             // --- Twitter Card tags (optional, recommended) ---
             dioxus::document::Meta { name: "twitter:card", content: "summary_large_image" }
             dioxus::document::Meta { name: "twitter:title", content: "Home | cryptonezumi.com" }
             dioxus::document::Meta { name: "twitter:description", content: "During the day, I develop with Drupal and Twig. At night, I focus on Rust and Dioxus." }
-            dioxus::document::Meta { name: "twitter:image", content: "https://cryptonezumi.com/assets/og-image.png" }
-            dioxus::document::Meta { name: "twitter:site", content: "@yourtwitterhandle" }
+            dioxus::document::Meta { name: "twitter:image", content: "https://cryptonezumi.com/assets/og-image.avif" }
+            dioxus::document::Meta { name: "twitter:site", content: "@MatsunagaKevin" }
             // --- Analytics and JSON-LD ---
             dioxus::document::Script {
                 "src": "https://stats.rockypodno.de/script.js",
