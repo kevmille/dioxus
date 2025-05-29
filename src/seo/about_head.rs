@@ -1,6 +1,8 @@
 use dioxus::prelude::*;
 use web_sys::window;
 
+const OGIMAGE: Asset = asset!("/assets/og-image.avif");
+
 #[component]
 pub fn AboutHead() -> Element {
     use_effect(move || {
@@ -37,14 +39,14 @@ pub fn AboutHead() -> Element {
                 dioxus::document::Meta { property: "og:title", content: "About cryptonezumi.com" }
                 dioxus::document::Meta { property: "og:type", content: "website" }
                 dioxus::document::Meta { property: "og:url", content: "https://cryptonezumi.com/about" }
-                dioxus::document::Meta { property: "og:image", content: "https://cryptonezumi.com/assets/og-image.avif" }
+                dioxus::document::Meta { property: "og:image", content: OGIMAGE }
                 dioxus::document::Meta { property: "og:description", content: "About Rockypod, the creator of cryptonezumi.com." }
                 dioxus::document::Meta { property: "og:site_name", content: "cryptonezumi.com" }
                 // --- Twitter Card tags (optional, recommended) ---
                 dioxus::document::Meta { name: "twitter:card", content: "summary_large_image" }
                 dioxus::document::Meta { name: "twitter:title", content: "Home | cryptonezumi.com" }
                 dioxus::document::Meta { name: "twitter:description", content: "About Rockypod, the creator of cryptonezumi.com." }
-                dioxus::document::Meta { name: "twitter:image", content: "https://cryptonezumi.com/assets/og-image.avif" }
+                dioxus::document::Meta { name: "twitter:image", content: OGIMAGE }
                 dioxus::document::Meta { name: "twitter:site", content: "@MatsunagaKevin" }
                 // --- Analytics and JSON-LD ---
                 dioxus::document::Script {
