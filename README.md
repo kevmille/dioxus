@@ -32,7 +32,7 @@ toki/
 │  ├─ main.rs # main.rs is the entry point to the application and currently contains all components for the app
 │  ├─ components # all reusable components
 │  ├─ pages # all page content
-│  ├─ seo # all metatags and SEO related components
+│  ├─ seo # all metatags and SEO related components including JSON-LD
 ├─ Cargo.toml # The Cargo.toml file defines the dependencies and feature flags for your project
 ├─ Dioxus.toml # The Dioxus.toml file defines the dependencies and feature flags for your project
 ├─ Dockerfile # Dockerfile for building and running the application with Fly.io
