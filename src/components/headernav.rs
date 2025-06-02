@@ -1,39 +1,15 @@
-use crate::{About, Blog, DioxusTailwind, Home};
-/// HeaderNav component
+// src/components/headernav.rs
 use dioxus::prelude::*;
 use dioxus_free_icons::icons::fa_brands_icons::{FaCss3, FaRust};
 use dioxus_free_icons::icons::ld_icons::{LdInfo, LdPencilLine};
 use dioxus_free_icons::Icon;
 
+// Import the Route from main.rs
+use crate::Route;
+
 const ROCKYPOD: Asset = asset!("/assets/rockypod.svg");
 
-#[derive(Debug, Clone, Routable, PartialEq)]
-#[rustfmt::skip]
-enum Route {
-    #[layout(HeaderNav)]
-    #[route("/")]
-    Home {},
-    #[route("/about")]
-    About {},
-    #[route("/dioxus-tailwind")]
-    DioxusTailwind {},
-    #[route("/blog/:id")]
-    Blog { id: i32 },
-}
-
-const FAVICON: Asset = asset!("/assets/favicon.ico");
-const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
-
 #[component]
-fn App() -> Element {
-    rsx! {
-        document::Link { rel: "icon", href: FAVICON }
-        document::Link { rel: "icon", href: ROCKYPOD }
-        document::Link { rel: "stylesheet", href: TAILWIND_CSS }
-        Router::<Route> { }
-    }
-}
-
 pub fn HeaderNav() -> Element {
     let mut mobile_menu_open = use_signal(|| false);
 
@@ -225,7 +201,5 @@ pub fn HeaderNav() -> Element {
                 }
             }
         }
-
-        Outlet::<Route> {}
     }
 }

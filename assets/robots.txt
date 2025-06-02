@@ -1,0 +1,46 @@
+# robots.txt for cryptonezumi.com
+
+# Allow all bots to crawl everything by default
+User-agent: *
+Allow: /
+
+# Google-specific settings
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bing-specific settings
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block common unwanted paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /target/
+Disallow: /src/
+Disallow: /.env
+Disallow: /Cargo.toml
+Disallow: /Cargo.lock
+
+# Allow important resources for proper page rendering
+Allow: /*.css$
+Allow: /*.js$
+Allow: /assets/
+Allow: /favicon.ico
+Allow: /robots.txt
+
+# Block aggressive crawlers (optional)
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+# Sitemaps
+Sitemap: https://cryptonezumi.com/sitemap.xml
+
+# Host directive (optional, tells search engines your preferred domain)
+Host: https://cryptonezumi.com

@@ -10,7 +10,7 @@ use dioxus::prelude::*;
 
 #[derive(Debug, Clone, Routable, PartialEq)]
 #[rustfmt::skip]
-enum Route {
+pub enum Route {  // Made this public so HeaderNav can import it
     #[layout(Navbar)]
     #[route("/")]
     Home {},
@@ -22,8 +22,6 @@ enum Route {
     Blog { id: i32 },
 }
 
-const FAVICON: Asset = asset!("/assets/favicon.ico");
-const ROCKYPOD: Asset = asset!("/assets/rockypod.svg");
 const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
 
 fn main() {
@@ -33,8 +31,6 @@ fn main() {
 #[component]
 fn App() -> Element {
     rsx! {
-        document::Link { rel: "icon", href: FAVICON }
-        document::Link { rel: "icon", href: ROCKYPOD }
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
         Router::<Route> { }
     }
@@ -110,6 +106,7 @@ pub fn Blog(id: i32) -> Element {
 #[component]
 fn Navbar() -> Element {
     rsx! {
-    HeaderNav{}
-        }
+        HeaderNav {}
+        Outlet::<Route> {}
+    }
 }

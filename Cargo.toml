@@ -23,6 +23,7 @@ dioxus-free-icons = { version = "0.9", features = [
 # Remove dioxus-helmet for now - it's not compatible with 0.6
 # dioxus-helmet = "0.2.4"  # Comment this out
 web-sys = "0.3.77"
+gloo-timers = { version = "0.3", features = ["futures"] }
 
 [features]
 default = ["web", "server"]
