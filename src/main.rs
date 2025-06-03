@@ -20,6 +20,10 @@ pub enum Route {  // Made this public so HeaderNav can import it
     DioxusTailwind {},
     #[route("/blog/:id")]
     Blog { id: i32 },
+    #[route("/robots.txt")]
+    RobotsTxt {},
+    #[route("/sitemap.xml")]
+    SitemapXml {},
 }
 
 const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
@@ -110,3 +114,25 @@ fn Navbar() -> Element {
         Outlet::<Route> {}
     }
 }
+
+/// Robots.txt route - serves the robots.txt file
+#[component]
+fn RobotsTxt() -> Element {
+    let robots_content = include_str!("../public/robots.txt");
+    
+    rsx! {
+        pre { "{robots_content}" }
+    }
+}
+
+/// Sitemap.xml route - serves the sitemap.xml file  
+#[component]
+fn SitemapXml() -> Element {
+    let sitemap_content = include_str!("../public/sitemap.xml");
+    
+    rsx! {
+        pre { "{sitemap_content}" }
+    }
+}
+
+

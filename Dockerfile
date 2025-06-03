@@ -27,8 +27,6 @@ RUN dx bundle --platform web
 
 FROM chef AS runtime
 COPY --from=builder /app/target/dx/toki/release/web/ /usr/local/app
-# Copy public directory files (robots.txt, sitemap.xml, etc.)
-COPY --from=builder /app/public/ /usr/local/app/
 
 # set our port and make sure to listen for all connections
 ENV PORT=8080
