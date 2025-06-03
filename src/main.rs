@@ -11,6 +11,12 @@ use dioxus::prelude::*;
 #[derive(Debug, Clone, Routable, PartialEq)]
 #[rustfmt::skip]
 pub enum Route {  // Made this public so HeaderNav can import it
+    #[route("/robots.txt")]
+    RobotsTxt {},
+    #[route("/sitemap.xml")]
+    SitemapXml {},
+    #[route("/og-image.avif")]
+    OgImage {},
     #[layout(Navbar)]
     #[route("/")]
     Home {},
@@ -20,10 +26,6 @@ pub enum Route {  // Made this public so HeaderNav can import it
     DioxusTailwind {},
     #[route("/blog/:id")]
     Blog { id: i32 },
-    #[route("/robots.txt")]
-    RobotsTxt {},
-    #[route("/sitemap.xml")]
-    SitemapXml {},
 }
 
 const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
@@ -121,7 +123,7 @@ fn RobotsTxt() -> Element {
     let robots_content = include_str!("../public/robots.txt");
     
     rsx! {
-        pre { "{robots_content}" }
+        "{robots_content}"
     }
 }
 
@@ -131,7 +133,17 @@ fn SitemapXml() -> Element {
     let sitemap_content = include_str!("../public/sitemap.xml");
     
     rsx! {
-        pre { "{sitemap_content}" }
+        "{sitemap_content}"
+    }
+}
+
+/// OG Image route - serves the og-image.avif file
+#[component]
+fn OgImage() -> Element {
+    let og_image = asset!("/assets/og-image.avif");
+    
+    rsx! {
+        img { src: og_image }
     }
 }
 

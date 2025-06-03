@@ -9,10 +9,10 @@ title = "toki"
 identifier = "cryptonezumi.app"
 
 [web.watcher]
-watch_path = ["src", "assets"]
+watch_path = ["src", "assets", "public"]
 index_on_404 = true
 
-# Optional: Add extra CSS or JS files if needed
+[web.resource]
 style = []
 script = []
 
