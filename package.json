@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "concurrently \"npm run css:watch\" \"dx serve --platform web\"",
-    "build": "npm run css:build && dx build --release",
+    "build": "npm run css:build && dx build --release --platform web && cp public/*.txt public/*.xml target/dx/toki/release/web/public/",
     "css:build": "tailwindcss -i ./assets/input.css -o ./assets/tailwind.css",
     "css:watch": "tailwindcss -i ./assets/input.css -o ./assets/tailwind.css --watch"
   },

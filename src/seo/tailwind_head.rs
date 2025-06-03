@@ -1,6 +1,8 @@
 use dioxus::prelude::*;
 use web_sys::window;
 
+const OG_IMAGE: Asset = asset!("/assets/og-image.avif");
+
 #[component]
 pub fn TailwindHead() -> Element {
     use_effect(move || {
@@ -76,7 +78,7 @@ pub fn TailwindHead() -> Element {
             dioxus::document::Meta { property: "og:title", content: "Dioxus + Tailwind | cryptonezumi.com" }
             dioxus::document::Meta { property: "og:type", content: "article" }
             dioxus::document::Meta { property: "og:url", content: "https://cryptonezumi.com/dioxus-tailwind" }
-            dioxus::document::Meta { property: "og:image", content: "https://cryptonezumi.com/assets/og-image.avif" }
+            dioxus::document::Meta { property: "og:image", content: "{OG_IMAGE}" }
             dioxus::document::Meta { property: "og:description", content: "A technical guide on how Tailwind 4 requires changes to the initial setup process for Dioxus web applications." }
             dioxus::document::Meta { property: "og:site_name", content: "cryptonezumi.com" }
             dioxus::document::Meta { property: "article:author", content: "Kevin Matsunaga" }
@@ -89,7 +91,7 @@ pub fn TailwindHead() -> Element {
             dioxus::document::Meta { name: "twitter:card", content: "summary_large_image" }
             dioxus::document::Meta { name: "twitter:title", content: "Dioxus + Tailwind | cryptonezumi.com" }
             dioxus::document::Meta { name: "twitter:description", content: "A technical guide on how Tailwind 4 requires changes to the initial setup process for Dioxus web applications." }
-            dioxus::document::Meta { name: "twitter:image", content: "https://cryptonezumi.com/assets/og-image.avif" }
+            dioxus::document::Meta { name: "twitter:image", content: "{OG_IMAGE}" }
             dioxus::document::Meta { name: "twitter:site", content: "@MatsunagaKevin" }
             dioxus::document::Meta { name: "twitter:creator", content: "@MatsunagaKevin" }
 

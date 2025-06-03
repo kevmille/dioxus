@@ -1,6 +1,8 @@
 use dioxus::prelude::*;
 use web_sys::window;
 
+const OG_IMAGE: Asset = asset!("/assets/og-image.avif");
+
 #[component]
 pub fn AboutHead() -> Element {
     use_effect(move || {
@@ -59,7 +61,7 @@ pub fn AboutHead() -> Element {
             dioxus::document::Meta { property: "og:title", content: "About | cryptonezumi.com" }
             dioxus::document::Meta { property: "og:type", content: "website" }
             dioxus::document::Meta { property: "og:url", content: "https://cryptonezumi.com/about" }
-            dioxus::document::Meta { property: "og:image", content: "https://cryptonezumi.com/assets/og-image.avif" }
+            dioxus::document::Meta { property: "og:image", content: "{OG_IMAGE}" }
             dioxus::document::Meta { property: "og:description", content: "About Kevin Matsunaga (Rockypod), a developer who works with Drupal and Twig by day, Rust and Dioxus by night." }
             dioxus::document::Meta { property: "og:site_name", content: "cryptonezumi.com" }
 
@@ -67,7 +69,7 @@ pub fn AboutHead() -> Element {
             dioxus::document::Meta { name: "twitter:card", content: "summary_large_image" }
             dioxus::document::Meta { name: "twitter:title", content: "About | cryptonezumi.com" }
             dioxus::document::Meta { name: "twitter:description", content: "About Kevin Matsunaga (Rockypod), a developer who works with Drupal and Twig by day, Rust and Dioxus by night." }
-            dioxus::document::Meta { name: "twitter:image", content: "https://cryptonezumi.com/assets/og-image.avif" }
+            dioxus::document::Meta { name: "twitter:image", content: "{OG_IMAGE}" }
             dioxus::document::Meta { name: "twitter:site", content: "@MatsunagaKevin" }
 
             // --- Analytics ---
