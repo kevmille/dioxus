@@ -137,13 +137,19 @@ fn SitemapXml() -> Element {
     }
 }
 
-/// OG Image route - serves the og-image.avif file
+/// OG Image route - redirects to Cloudinary URL
 #[component]
 fn OgImage() -> Element {
-    let og_image = asset!("/assets/og-image.avif");
+    use_effect(|| {
+        if let Some(window) = web_sys::window() {
+            if let Some(location) = window.location() {
+                location.set_href("https://res.cloudinary.com/shinkirin/image/upload/v1748553775/rockypod/h1cd1gz4ycs04nnc0wzi.avif").ok();
+            }
+        }
+    });
     
     rsx! {
-        img { src: og_image }
+        div { "Redirecting to og-image..." }
     }
 }
 

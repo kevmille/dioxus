@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 use web_sys::window;
 
-const OG_IMAGE: Asset = asset!("/assets/og-image.avif");
+const OG_IMAGE: &str = "https://res.cloudinary.com/shinkirin/image/upload/v1748553775/rockypod/h1cd1gz4ycs04nnc0wzi.avif";
 
 #[component]
 pub fn HomeHead() -> Element {
