@@ -142,9 +142,8 @@ fn SitemapXml() -> Element {
 fn OgImage() -> Element {
     use_effect(|| {
         if let Some(window) = web_sys::window() {
-            if let Some(location) = window.location() {
-                location.set_href("https://res.cloudinary.com/shinkirin/image/upload/v1748553775/rockypod/h1cd1gz4ycs04nnc0wzi.avif").ok();
-            }
+            let location = window.location();
+            location.set_href("https://res.cloudinary.com/shinkirin/image/upload/v1748553775/rockypod/h1cd1gz4ycs04nnc0wzi.avif").ok();
         }
     });
     
