@@ -43,7 +43,7 @@ pub fn UnifiedHead(page_type: PageType) -> Element {
         ),
     };
 
-    let json_ld = match page_type {
+    let _json_ld = match page_type {
         PageType::Home => r#"{
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -186,15 +186,17 @@ pub fn UnifiedHead(page_type: PageType) -> Element {
             }
 
             // JSON-LD structured data
-            dioxus::document::Script {
-                r#type: "application/ld+json",
-                "{json_ld}"
-            }
+            // Temporarily commented out to fix startup errors
+            // dioxus::document::Script {
+            //     r#type: "application/ld+json",
+            //     "{json_ld}"
+            // }
 
             // Analytics
             dioxus::document::Script {
                 src: "https://stats.rockypodno.de/script.js",
-                "data-website-id": "a2c48057-24d6-4c9a-b664-815071c1e3ff"
+                "data-website-id": "a2c48057-24d6-4c9a-b664-815071c1e3ff",
+                defer: true
             }
         }
     }
