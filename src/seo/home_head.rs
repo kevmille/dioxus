@@ -1,8 +1,6 @@
 use dioxus::prelude::*;
 use web_sys::window;
 
-const OG_IMAGE: &str = "https://res.cloudinary.com/shinkirin/image/upload/v1748553775/rockypod/h1cd1gz4ycs04nnc0wzi.avif";
-
 #[component]
 pub fn HomeHead() -> Element {
     // Use use_resource instead of use_effect for better reliability
@@ -72,15 +70,23 @@ pub fn HomeHead() -> Element {
             dioxus::document::Meta { property: "og:title", content: "Home | cryptonezumi.com" }
             dioxus::document::Meta { property: "og:type", content: "website" }
             dioxus::document::Meta { property: "og:url", content: "https://cryptonezumi.com" }
-            dioxus::document::Meta { property: "og:image", content: "{OG_IMAGE}" }
+            dioxus::document::Meta { property: "og:locale", content: "en_US" }
+            dioxus::document::Meta { property: "og:image", content: "https://res.cloudinary.com/shinkirin/image/upload/v1748553775/rockypod/h1cd1gz4ycs04nnc0wzi.avif" }
+            dioxus::document::Meta { property: "og:image:alt", content: "cryptonezumi.com website logo" }
+            dioxus::document::Meta { property: "og:image:width", content: "1200" }
+            dioxus::document::Meta { property: "og:image:height", content: "630" }
+            dioxus::document::Meta { property: "og:image:type", content: "image/avif" }
             dioxus::document::Meta { property: "og:description", content: "During the day, I develop with Drupal and Twig. At night, I focus on Rust and Dioxus." }
             dioxus::document::Meta { property: "og:site_name", content: "cryptonezumi.com" }
 
             // --- Twitter Card tags ---
             dioxus::document::Meta { name: "twitter:card", content: "summary_large_image" }
+            dioxus::document::Meta { property: "twitter:domain", content: "cryptonezumi.com" }
+            dioxus::document::Meta { property: "twitter:url", content: "https://cryptonezumi.com" }
             dioxus::document::Meta { name: "twitter:title", content: "Home | cryptonezumi.com" }
             dioxus::document::Meta { name: "twitter:description", content: "During the day, I develop with Drupal and Twig. At night, I focus on Rust and Dioxus." }
-            dioxus::document::Meta { name: "twitter:image", content: "{OG_IMAGE}" }
+            dioxus::document::Meta { name: "twitter:image", content: "https://res.cloudinary.com/shinkirin/image/upload/v1748553775/rockypod/h1cd1gz4ycs04nnc0wzi.avif" }
+            dioxus::document::Meta { name: "twitter:image:alt", content: "cryptonezumi.com website logo" }
             dioxus::document::Meta { name: "twitter:site", content: "@MatsunagaKevin" }
 
             // --- Analytics ---

@@ -1,8 +1,6 @@
 use dioxus::prelude::*;
 use web_sys::window;
 
-const OG_IMAGE: &str = "https://res.cloudinary.com/shinkirin/image/upload/v1748553775/rockypod/h1cd1gz4ycs04nnc0wzi.avif";
-
 #[component]
 pub fn TailwindHead() -> Element {
     use_effect(move || {
@@ -78,7 +76,12 @@ pub fn TailwindHead() -> Element {
             dioxus::document::Meta { property: "og:title", content: "Dioxus + Tailwind | cryptonezumi.com" }
             dioxus::document::Meta { property: "og:type", content: "article" }
             dioxus::document::Meta { property: "og:url", content: "https://cryptonezumi.com/dioxus-tailwind" }
-            dioxus::document::Meta { property: "og:image", content: "{OG_IMAGE}" }
+            dioxus::document::Meta { property: "og:locale", content: "en_US" }
+            dioxus::document::Meta { property: "og:image", content: "https://res.cloudinary.com/shinkirin/image/upload/v1748553775/rockypod/h1cd1gz4ycs04nnc0wzi.avif" }
+            dioxus::document::Meta { property: "og:image:alt", content: "Dioxus + Tailwind CSS Tutorial - cryptonezumi.com" }
+            dioxus::document::Meta { property: "og:image:width", content: "1200" }
+            dioxus::document::Meta { property: "og:image:height", content: "630" }
+            dioxus::document::Meta { property: "og:image:type", content: "image/avif" }
             dioxus::document::Meta { property: "og:description", content: "A technical guide on how Tailwind 4 requires changes to the initial setup process for Dioxus web applications." }
             dioxus::document::Meta { property: "og:site_name", content: "cryptonezumi.com" }
             dioxus::document::Meta { property: "article:author", content: "Kevin Matsunaga" }
@@ -89,9 +92,12 @@ pub fn TailwindHead() -> Element {
 
             // --- Twitter Card tags ---
             dioxus::document::Meta { name: "twitter:card", content: "summary_large_image" }
+            dioxus::document::Meta { property: "twitter:domain", content: "cryptonezumi.com" }
+            dioxus::document::Meta { property: "twitter:url", content: "https://cryptonezumi.com/dioxus-tailwind" }
             dioxus::document::Meta { name: "twitter:title", content: "Dioxus + Tailwind | cryptonezumi.com" }
             dioxus::document::Meta { name: "twitter:description", content: "A technical guide on how Tailwind 4 requires changes to the initial setup process for Dioxus web applications." }
-            dioxus::document::Meta { name: "twitter:image", content: "{OG_IMAGE}" }
+            dioxus::document::Meta { name: "twitter:image", content: "https://res.cloudinary.com/shinkirin/image/upload/v1748553775/rockypod/h1cd1gz4ycs04nnc0wzi.avif" }
+            dioxus::document::Meta { name: "twitter:image:alt", content: "Dioxus + Tailwind CSS Tutorial - cryptonezumi.com" }
             dioxus::document::Meta { name: "twitter:site", content: "@MatsunagaKevin" }
             dioxus::document::Meta { name: "twitter:creator", content: "@MatsunagaKevin" }
 
