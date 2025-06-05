@@ -22,10 +22,10 @@ pub fn DioxusTailwindMain() -> Element {
 }
 "#;
     rsx! {
-        div { class: "bg-bamboo-50 px-6 py-32 lg:px-8",
+        main { role: "main", class: "bg-bamboo-50 px-6 py-32 lg:px-8",
             div { class: "mx-auto max-w-3xl text-bamboo-800",
                 p { class: "font-bold text-sakura-800 uppercase", "Tailwind 4" }
-                h1 { class: "mt-2 text-4xl font-bold tracking-tight text-pretty text-sakura-500 sm:text-5xl",
+                h2 { class: "mt-2 text-4xl font-bold tracking-tight text-pretty text-sakura-500 sm:text-5xl",
                     "Dioxus + Tailwind CSS"
                 }
                 p { class: "mt-6 text-xl font-bold",
@@ -62,8 +62,8 @@ pub fn DioxusTailwindMain() -> Element {
                     p { class: "mt-8",
                         "Check the relative paths for both input.css and tailwindcss. Update your " strong{"package.json"} " file to match the following:"
                     }
-                    pre { class: "mt-8 bg-gray-900 text-green-200 p-4 rounded overflow-x-auto text-sm",
-                        code { class: "language-json", "{package_json}" }
+                    pre { class: "mt-8 bg-gray-900 text-green-200 p-4 rounded overflow-x-auto overflow-y-scroll text-sm", tabindex: "0",
+                        code { class: "language-json", tabindex: "0", "{package_json}" }
                     }
                     p { class: "mt-8",
                         "Now you can execute the following command in your project root folder to run tailwindcss and dx concurrently:"

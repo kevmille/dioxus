@@ -1,20 +1,20 @@
 [application]
-name = "dioxus-app"
+name = "toki"
 default_platform = "web"
 
 [web.app]
-title = "toki"
-
-[bundle]
-identifier = "cryptonezumi.app"
+title = "cryptonezumi.com"
 
 [web.watcher]
 watch_path = ["src", "assets", "public"]
 index_on_404 = true
 
 [web.resource]
-style = []
+style = ["/tailwind.css"]
 script = []
 
 [web.resource.dev]
 dev = true
+
+[bundle]
+identifier = "com.cryptonezumi.toki"

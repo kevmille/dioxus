@@ -3,7 +3,7 @@ use dioxus::prelude::*;
 
 pub fn CallToAction() -> Element {
     rsx! {
-        div { class: "bg-forest-100 py-24",
+        div { role: "complementary", aria_label: "Call to action", class: "bg-forest-100 py-24",
             div { class: "mx-auto max-w-7xl px-6 lg:flex lg:items-center lg:justify-between lg:px-8",
                 h2 { class: "max-w-2xl text-4xl font-semibold tracking-tight text-gray-900 lg:text-5xl",
                     "Ready to dive in? "

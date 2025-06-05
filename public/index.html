@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- These will be replaced/enhanced by Dioxus -->
+        <title>cryptonezumi.com</title>
+        <meta
+            name="description"
+            content="cryptonezumi.com - Rust and Dioxus development"
+        />
+
+        <!-- Preload critical resources -->
+        <link rel="preload" href="/tailwind.css" as="style" />
+
+        <!-- Favicon -->
+        <link rel="icon" href="/favicon.ico" />
+
+        <!-- Critical CSS -->
+        <link rel="stylesheet" href="/tailwind.css" />
+
+        <!-- Theme and viewport optimization -->
+        <meta name="theme-color" content="#FBE9E9" />
+        <meta name="robots" content="index, follow" />
+
+        <!-- Prevent FOUC (Flash of Unstyled Content) -->
+        <style>
+            body {
+                margin: 0;
+                font-family:
+                    system-ui,
+                    -apple-system,
+                    sans-serif;
+                background-color: #fefefe;
+            }
+            #main {
+                min-height: 100vh;
+            }
+            /* Loading state */
+            .loading {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                color: #6b7280;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <!-- Fallback content for non-JS users -->
+            <noscript>
+                <div style="text-align: center; padding: 2rem; color: #6b7280">
+                    <h1>JavaScript Required</h1>
+                    <p>
+                        This application requires JavaScript to function
+                        properly.
+                    </p>
+                </div>
+            </noscript>
+
+            <!-- Loading indicator -->
+            <div class="loading" id="loading">Loading...</div>
+        </div>
+
+        <!-- Hide loading indicator once app loads -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Hide loading indicator once the app starts rendering
+                setTimeout(() => {
+                    const loading = document.getElementById("loading");
+                    if (loading && loading.textContent === "Loading...") {
+                        loading.style.display = "none";
+                    }
+                }, 100);
+            });
+        </script>
+    </body>
+</html>

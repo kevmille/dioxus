@@ -18,7 +18,7 @@ name = "toki"
 path = "src/main.rs"
 
 [dependencies]
-dioxus = { version = "0.6", features = ["router", "fullstack"] }
+dioxus = { version = "0.6", features = ["router", "web"] }
 dioxus-free-icons = { version = "0.9", features = [
     "font-awesome-brands",
     "lucide",
@@ -29,11 +29,10 @@ web-sys = "0.3.77"
 gloo-timers = { version = "0.3", features = ["futures"] }
 
 [features]
-default = ["web", "server"]
+default = ["web"]
 web = ["dioxus/web"]
 desktop = ["dioxus/desktop"]
 mobile = ["dioxus/mobile"]
-server = ["dioxus/server"]
 
 [profile.wasm-dev]
 inherits = "dev"

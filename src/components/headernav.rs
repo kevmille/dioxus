@@ -18,6 +18,7 @@ pub fn HeaderNav() -> Element {
             nav {
                 class: "mx-auto flex max-w-7xl items-center justify-between p-2 lg:px-4",
                 "aria-label": "Global",
+                "role": "navigation",
                 Link {
                     to: Route::Home {},
                     class: "-m-1.5 p-1.5 flex items-center",
@@ -27,8 +28,8 @@ pub fn HeaderNav() -> Element {
                         src: ROCKYPOD,
                         alt: "RockyPod Avatar"
                     }
-                    span { class: "ml-3 text-2xl sm:text-3xl lg:text-4xl font-bold text-sakura-800",
-                        span { class: "text-forest-800", "crypto" }
+                    h1 { class: "ml-3 text-2xl sm:text-3xl lg:text-4xl font-bold text-sakura-800",
+                        span { class: "text-forest-900", "crypto" }
                         "nezumi.com"
                     }
                 }
@@ -58,7 +59,7 @@ pub fn HeaderNav() -> Element {
                 div { class: "hidden lg:flex lg:gap-x-12",
                     Link {
                         to: Route::Home {},
-                        class: "text-xl font-bold text-sakura-500 flex items-center",
+                        class: "text-xl font-bold text-sakura-700 flex items-center",
                         Icon {
                             width: 30,
                             height: 30,
@@ -69,7 +70,7 @@ pub fn HeaderNav() -> Element {
                     }
                     Link {
                         to: Route::About {},
-                        class: "text-xl font-bold text-sakura-500 flex items-center",
+                        class: "text-xl font-bold text-sakura-700 flex items-center",
                         Icon {
                                 width: 30,
                                 height: 30,
@@ -80,7 +81,7 @@ pub fn HeaderNav() -> Element {
                     }
                     Link {
                         to: Route::DioxusTailwind {},
-                        class: "text-xl font-bold text-sakura-500 flex items-center",
+                        class: "text-xl font-bold text-sakura-700 flex items-center",
                         Icon {
                             width: 30,
                             height: 30,
@@ -91,7 +92,7 @@ pub fn HeaderNav() -> Element {
                     }
                     Link {
                         to: Route::Blog { id: 1 },
-                        class: "text-xl font-bold text-sakura-500 flex items-center",
+                        class: "text-xl font-bold text-sakura-700 flex items-center",
                         Icon {
                                 width: 30,
                                 height: 30,

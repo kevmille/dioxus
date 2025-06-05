@@ -3,9 +3,9 @@ use dioxus::prelude::*;
 
 pub fn AboutMain() -> Element {
     rsx! {
-        div { class: "max-w-7xl mx-auto px-6 py-12",
+        div { role: "main", class: "max-w-7xl mx-auto px-6 py-12",
             div { class: "bg-white rounded-xl shadow-lg p-8 mb-8",
-                h1 { class: "text-4xl font-bold text-gray-900 mb-6",
+                h2 { class: "text-4xl font-bold text-gray-900 mb-6",
                     "About Dioxus"
                 }
                 p { class: "text-lg text-green-600 bg-green-50 rounded-lg p-4 mb-6",
@@ -19,7 +19,7 @@ pub fn AboutMain() -> Element {
                     " website for more information."
                 }
 
-                h2 { class: "text-2xl font-semibold text-gray-800 mb-4 uppercase tracking-wide", "Key Features" }
+                h3 { class: "text-2xl font-semibold text-gray-800 mb-4 uppercase tracking-wide", "Key Features" }
                 ul { class: "grid grid-cols-1 md:grid-cols-2 gap-4 mb-8",
                     li { class: "flex items-center p-3 bg-bamboo-50 rounded-lg",
                         span { class: "w-2 h-2 bg-bamboo-500 rounded-full mr-3" }

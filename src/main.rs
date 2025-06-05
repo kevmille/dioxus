@@ -3,10 +3,11 @@ mod pages;
 mod seo;
 
 use crate::pages::{AboutMain, DioxusTailwindMain};
-use crate::seo::{AboutHead, HomeHead, TailwindHead};
+use crate::seo::{UnifiedHead, PageType};
 use components::{BentoGrid, CallToAction, Footer, HeaderNav, Hero, FAQ};
 
 use dioxus::prelude::*;
+use web_sys;
 
 #[derive(Debug, Clone, Routable, PartialEq)]
 #[rustfmt::skip]
@@ -36,6 +37,17 @@ fn main() {
 
 #[component]
 fn App() -> Element {
+    // Ensure html element has lang attribute
+    use_effect(move || {
+        if let Some(window) = web_sys::window() {
+            if let Some(document) = window.document() {
+                if let Some(html_element) = document.document_element() {
+                    let _ = html_element.set_attribute("lang", "en");
+                }
+            }
+        }
+    });
+
     rsx! {
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
         Router::<Route> { }
@@ -46,7 +58,7 @@ fn App() -> Element {
 #[component]
 fn Home() -> Element {
     rsx! {
-        HomeHead {}
+        UnifiedHead { page_type: PageType::Home }
         Hero {}
         BentoGrid {}
         Footer {}
@@ -57,7 +69,7 @@ fn Home() -> Element {
 #[component]
 fn About() -> Element {
     rsx! {
-        AboutHead {}
+        UnifiedHead { page_type: PageType::About }
         AboutMain {}
         CallToAction {}
         FAQ {}
@@ -69,7 +81,7 @@ fn About() -> Element {
 #[component]
 pub fn DioxusTailwind() -> Element {
     rsx! {
-        TailwindHead {}
+        UnifiedHead { page_type: PageType::DioxusTailwind }
         DioxusTailwindMain {}
         Footer {}
     }

@@ -6,12 +6,12 @@ static ZED: Asset = asset!("/assets/zed.png", ImageAssetOptions::new().with_avif
 #[component]
 pub fn Hero() -> Element {
     rsx! {
-        div { class: "overflow-hidden bg-bamboo-50 py-24 sm:py-32 border-b-2 border-forest-700",
+        div { role: "complementary", "aria-label": "Welcome", class: "overflow-hidden bg-bamboo-50 py-24 sm:py-32 border-b-2 border-forest-700",
             div { class: "mx-auto max-w-7xl px-6 lg:px-8",
                 div { class: "mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2",
                     div { class: "lg:pt-4 lg:pr-8",
                         div { class: "lg:max-w-lg",
-                            h2 { class: "text-lg font-semibold text-sakura-500", "Learning Rust." }
+                            h2 { class: "text-lg font-semibold text-sakura-700", "Learning Rust." }
                             p { class: "mt-2 text-2xl font-semibold tracking-tight text-pretty text-bamboo-900 sm:text-4xl",
                                 "A Rustacean convert"
                             }

@@ -11,9 +11,9 @@ const BLOCKCHAIN_JPG: Asset = asset!("/assets/blockchain.jpg");
 pub fn BentoGrid() -> Element {
     rsx! {
 
-        div { class: "bg-forest-100 py-12 sm:py-16",
+        div { role: "main", class: "bg-forest-100 py-12 sm:py-16",
             div { class: "mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8",
-                h2 { class: "text-lg font-semibold text-sakura-600", "I learned Windows in the Russian language." }
+                h2 { class: "text-lg font-semibold text-sakura-700", "I learned Windows in the Russian language." }
                 p { class: "mt-2 max-w-lg text-4xl font-semibold tracking-tight text-pretty text-bamboo-900 sm:text-5xl",
                     "A world tech learner"
                 }
@@ -45,12 +45,12 @@ pub fn BentoGrid() -> Element {
                                 }
                             }
                             div { class: "p-10 pt-4",
-                                h3 { class: "text-lg font-semibold text-sakura-600",
+                                h3 { class: "text-lg font-semibold text-sakura-700",
                                     "Salaam Central Asia"
                                 }
                                 p { class: "mt-2 max-w-lg text-lg font-semibold text-bamboo-900",
                                     "My web development journey started after my Peace Corps experience in Kazakhstan and four month stint with Accels in the Kyrgyz Republic. "
-                                    "Website: " Link { to: "https://amerasianworld.com", class: "text-sakura-500 hover:text-indigo-500", " AmerasianWorld.com" } "."
+                                    "Website: " Link { to: "https://amerasianworld.com", class: "text-sakura-700 hover:text-indigo-500", " AmerasianWorld.com" } "."
                                 }
                             }
                         }
@@ -77,7 +77,7 @@ pub fn BentoGrid() -> Element {
                                 }
                             }
                             div { class: "p-10 pt-4",
-                                h3 { class: "text-lg font-semibold text-sakura-600",
+                                h3 { class: "text-lg font-semibold text-sakura-700",
                                     "Blockchains"
                                 }
                                 p { class: "mt-2 max-w-lg text-lg font-semibold text-bamboo-900",
@@ -101,7 +101,7 @@ pub fn BentoGrid() -> Element {
                                 }
                             }
                             div { class: "p-10 pt-4",
-                                h3 { class: "text-lg font-semibold text-sakura-600",
+                                h3 { class: "text-lg font-semibold text-sakura-700",
                                     "Containers"
                                 }
                                 p { class: "mt-2 text-lg font-semibold tracking-tight text-bamboo-900",
@@ -128,7 +128,7 @@ pub fn BentoGrid() -> Element {
                                 }
                             }
                             div { class: "p-10 pt-4",
-                                h3 { class: "text-lg font-semibold text-sakura-600",
+                                h3 { class: "text-lg font-semibold text-sakura-700",
                                     "AI coding tool"
                                 }
                                 p { class: "mt-2 text-lg font-semibold tracking-tight text-bamboo-900",
@@ -155,7 +155,7 @@ pub fn BentoGrid() -> Element {
                                 }
                             }
                             div { class: "p-10 pt-4",
-                                h3 { class: "text-lg font-semibold text-sakura-600",
+                                h3 { class: "text-lg font-semibold text-sakura-700",
                                     "The purpose of this website"
                                 }
                                 p { class: "mt-2 text-lg font-semibold tracking-tight text-bamboo-900",
