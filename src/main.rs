@@ -163,5 +163,3 @@ fn OgImage() -> Element {
         div { "Redirecting to og-image..." }
     }
 }
-
-

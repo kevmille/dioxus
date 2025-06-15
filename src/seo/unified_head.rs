@@ -43,74 +43,80 @@ pub fn UnifiedHead(page_type: PageType) -> Element {
         ),
     };
 
-    let _json_ld = match page_type {
-        PageType::Home => r#"{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "cryptonezumi.com",
-  "url": "https://cryptonezumi.com",
-  "datePublished": "2025-05-25",
-  "dateModified": "2025-06-01",
-  "sameAs": "https://rockypod.com",
-  "author": {
-    "@type": "Person",
-    "name": "Kevin Matsunaga",
-    "sameAs": "https://twitter.com/MatsunagaKevin"
-  }
-}"#,
-        PageType::About => r#"{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "About | cryptonezumi.com",
-  "description": "About Kevin Matsunaga (Rockypod), a developer who works with Drupal and Twig by day, Rust and Dioxus by night.",
-  "url": "https://cryptonezumi.com/about",
-  "datePublished": "2025-05-25",
-  "dateModified": "2025-06-01",
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "cryptonezumi.com",
-    "url": "https://cryptonezumi.com"
-  },
-  "author": {
-    "@type": "Person",
-    "name": "Kevin Matsunaga",
-    "sameAs": "https://twitter.com/MatsunagaKevin"
-  }
-}"#,
-        PageType::DioxusTailwind => r#"{
-  "@context": "https://schema.org",
-  "@type": ["WebPage", "TechArticle"],
-  "name": "Dioxus + Tailwind | cryptonezumi.com",
-  "headline": "Setting up Tailwind CSS 4 with Dioxus",
-  "description": "A technical guide on how Tailwind 4 requires changes to the initial setup process for Dioxus web applications.",
-  "url": "https://cryptonezumi.com/dioxus-tailwind",
-  "datePublished": "2025-05-25",
-  "dateModified": "2025-06-01",
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "cryptonezumi.com",
-    "url": "https://cryptonezumi.com"
-  },
-  "author": {
-    "@type": "Person",
-    "name": "Kevin Matsunaga",
-    "sameAs": "https://twitter.com/MatsunagaKevin"
-  },
-  "about": [
-    {
-      "@type": "SoftwareApplication",
-      "name": "Dioxus",
-      "applicationCategory": "Web Framework"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "name": "Tailwind CSS",
-      "applicationCategory": "CSS Framework"
-    }
-  ],
-  "programmingLanguage": "Rust"
-}"#,
-    };
+    let json_ld = match page_type {
+        PageType::Home => {
+            r#"{
+                    "@context": "https://schema.org",
+                    "@type": "WebSite",
+                    "name": "cryptonezumi.com",
+                    "url": "https://cryptonezumi.com",
+                    "datePublished": "2025-05-25",
+                    "dateModified": "2025-06-01",
+                    "sameAs": "https://rockypod.com",
+                    "author": {
+                        "@type": "Person",
+                        "name": "Kevin Matsunaga",
+                        "sameAs": "https://twitter.com/MatsunagaKevin"
+                    }
+                    }"#
+        }
+        PageType::About => {
+            r#"{
+                    "@context": "https://schema.org",
+                    "@type": "WebPage",
+                    "name": "About | cryptonezumi.com",
+                    "description": "About Kevin Matsunaga (Rockypod), a developer who works with Drupal and Twig by day, Rust and Dioxus by night.",
+                    "url": "https://cryptonezumi.com/about",
+                    "datePublished": "2025-05-25",
+                    "dateModified": "2025-06-01",
+                    "isPartOf": {
+                        "@type": "WebSite",
+                        "name": "cryptonezumi.com",
+                        "url": "https://cryptonezumi.com"
+                    },
+                    "author": {
+                        "@type": "Person",
+                        "name": "Kevin Matsunaga",
+                        "sameAs": "https://twitter.com/MatsunagaKevin"
+                    }
+                }"#
+        }
+        PageType::DioxusTailwind => {
+            r#"{
+                    "@context": "https://schema.org",
+                    "@type": ["WebPage", "TechArticle"],
+                    "name": "Dioxus + Tailwind | cryptonezumi.com",
+                    "headline": "Setting up Tailwind CSS 4 with Dioxus",
+                    "description": "A technical guide on how Tailwind 4 requires changes to the initial setup process for Dioxus web applications.",
+                    "url": "https://cryptonezumi.com/dioxus-tailwind",
+                    "datePublished": "2025-05-25",
+                    "dateModified": "2025-06-01",
+                    "isPartOf": {
+                        "@type": "WebSite",
+                        "name": "cryptonezumi.com",
+                        "url": "https://cryptonezumi.com"
+                    },
+                    "author": {
+                        "@type": "Person",
+                        "name": "Kevin Matsunaga",
+                        "sameAs": "https://twitter.com/MatsunagaKevin"
+                    },
+                    "about": [
+                        {
+                        "@type": "SoftwareApplication",
+                        "name": "Dioxus",
+                        "applicationCategory": "Web Framework"
+                        },
+                        {
+                        "@type": "SoftwareApplication",
+                        "name": "Tailwind CSS",
+                        "applicationCategory": "CSS Framework"
+                        }
+                    ],
+                    "programmingLanguage": "Rust"
+                }"#
+            }
+        };
 
     rsx! {
         head {
@@ -119,16 +125,16 @@ pub fn UnifiedHead(page_type: PageType) -> Element {
             dioxus::document::Meta { name: "viewport", content: "width=device-width, initial-scale=1" }
             dioxus::document::Meta { name: "robots", content: "index, follow" }
             dioxus::document::Meta { name: "theme-color", content: "#FBE9E9" }
-            
+
             // Title and description
             dioxus::document::Title { "{title}" }
             dioxus::document::Meta { name: "description", content: "{description}" }
-            
+
             // Keywords (only for certain pages)
             if let Some(kw) = keywords {
                 dioxus::document::Meta { name: "keywords", content: "{kw}" }
             }
-            
+
             // Links
             dioxus::document::Link { rel: "icon", href: "/favicon.ico" }
             dioxus::document::Link { rel: "stylesheet", href: "/tailwind.css" }
@@ -140,8 +146,8 @@ pub fn UnifiedHead(page_type: PageType) -> Element {
             dioxus::document::Meta { property: "og:url", content: "{url}" }
             dioxus::document::Meta { property: "og:locale", content: "en_US" }
             dioxus::document::Meta { property: "og:image", content: "https://res.cloudinary.com/shinkirin/image/upload/v1748553775/rockypod/h1cd1gz4ycs04nnc0wzi.avif" }
-            dioxus::document::Meta { 
-                property: "og:image:alt", 
+            dioxus::document::Meta {
+                property: "og:image:alt",
                 content: match page_type {
                     PageType::Home => "cryptonezumi.com website logo",
                     PageType::About => "About Kevin Matsunaga - cryptonezumi.com",
@@ -170,16 +176,16 @@ pub fn UnifiedHead(page_type: PageType) -> Element {
             dioxus::document::Meta { name: "twitter:title", content: "{title}" }
             dioxus::document::Meta { name: "twitter:description", content: "{description}" }
             dioxus::document::Meta { name: "twitter:image", content: "https://res.cloudinary.com/shinkirin/image/upload/v1748553775/rockypod/h1cd1gz4ycs04nnc0wzi.avif" }
-            dioxus::document::Meta { 
-                name: "twitter:image:alt", 
+            dioxus::document::Meta {
+                name: "twitter:image:alt",
                 content: match page_type {
                     PageType::Home => "cryptonezumi.com website logo",
-                    PageType::About => "About Kevin Matsunaga - cryptonezumi.com", 
+                    PageType::About => "About Kevin Matsunaga - cryptonezumi.com",
                     PageType::DioxusTailwind => "Dioxus + Tailwind CSS Tutorial - cryptonezumi.com",
                 }
             }
             dioxus::document::Meta { name: "twitter:site", content: "@MatsunagaKevin" }
-            
+
             // Twitter creator (only for article pages)
             if page_type == PageType::DioxusTailwind {
                 dioxus::document::Meta { name: "twitter:creator", content: "@MatsunagaKevin" }
@@ -187,10 +193,10 @@ pub fn UnifiedHead(page_type: PageType) -> Element {
 
             // JSON-LD structured data
             // Temporarily commented out to fix startup errors
-            // dioxus::document::Script {
-            //     r#type: "application/ld+json",
-            //     "{json_ld}"
-            // }
+            dioxus::document::Script {
+                r#type: "application/ld+json",
+                content: "{json_ld}"
+            }
 
             // Analytics
             dioxus::document::Script {

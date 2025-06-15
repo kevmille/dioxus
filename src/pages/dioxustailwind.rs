@@ -42,8 +42,8 @@ pub fn DioxusTailwindMain() -> Element {
                         Link {
                             to: "https://tailwindcss.com/docs/installation/tailwind-cli",
                             rel: "noopener noreferrer",
-                            class: "text-sakura-500 hover:underline hover:text-indigo-600 hover:decoration-indigo-600 hover:decoration-wavy ml-4",
-                            "https://tailwindcss.com/docs/installation/tailwind-cli"
+                            class: "text-sakura-500 hover:underline hover:text-indigo-500 ml-4",
+                            strong { "https://tailwindcss.com/docs/installation/tailwind-cli" }
                         }
                         br {}
                         br {}
