@@ -3,7 +3,7 @@
 /target
 .DS_Store
 .history
-browser-tools-mcp
+browser-tools-mcp/
 node_modules/
 .cursor/
 
